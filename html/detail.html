@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>深海探索 🐠</title>
+		<link rel="stylesheet" href="../css/ocean-theme.css" />
+		<link rel="stylesheet" href="../css/detail.css" />
+		<link rel="stylesheet" href="../css/base.css" />
+		<style>
+			/* 页面进入动画 */
+			.fade-in {
+				animation: fadeInUp 0.8s ease forwards;
+				opacity: 0;
+			}
+
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.fade-in:nth-child(1) { animation-delay: 0.1s; }
+			.fade-in:nth-child(2) { animation-delay: 0.2s; }
+			.fade-in:nth-child(3) { animation-delay: 0.3s; }
+			.fade-in:nth-child(4) { animation-delay: 0.4s; }
+			.fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+			/* 海洋装饰元素 */
+			.ocean-deco {
+				position: fixed;
+				font-size: 24px;
+				opacity: 0.3;
+				animation: float-gentle 6s ease-in-out infinite;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			.ocean-deco:nth-child(1) { top: 20%; left: 5%; animation-delay: 0s; }
+			.ocean-deco:nth-child(2) { top: 60%; right: 8%; animation-delay: 2s; }
+			.ocean-deco:nth-child(3) { bottom: 15%; left: 10%; animation-delay: 4s; }
+		</style>
+	</head>
+	<body>
+		<!-- 海洋装饰 -->
+		<div class="ocean-deco">🐠</div>
+		<div class="ocean-deco">🐡</div>
+		<div class="ocean-deco">🦈</div>
+
+		<!-- 顶部介绍 -->
+		<div id="intro" class="fade-in">
+			<div class="intro-content">
+				<h2>🐚 深海探索 · 我的海洋宝藏</h2>
+				<p>在蔚蓝的深海里，藏着无数奇妙的宝藏和秘密</p>
+				<p>这里有珊瑚礁上的音乐厅，有热血国漫的激情，有洋流中的运动场，还有深海摄影师的镜头</p>
+				<p>你将看到的是我如何在海洋音乐中聆听潮汐，在国漫世界中感受热血，在洋流和光影中感受生命的律动</p>
+				<p>欢迎潜入这片深海，也许你会发现我们热爱的事情有那么多重叠的部分 🐬</p>
+			</div>
+		</div>
+
+		<!-- 导航 -->
+		<div id="nav">
+			<a href="#music">🎵 海洋音乐</a>
+			<a href="#anime">🎬 国漫殿堂</a>
+			<a href="#sport">🏊 海洋运动</a>
+			<a href="#photo">📷 海底摄影</a>
+		</div>
+
+		<!-- 音乐 -->
+		<div id="music">
+			<div class="main-content">
+				<h2>🎵 海洋音乐厅</h2>
+				<div class="cd-section">
+					<h3>🎧 深海私藏歌单</h3>
+					<p class="cd-intro">有些旋律是潮汐的低语，它们陪我穿越深海，也见证了珊瑚的绽放</p>
+					<div class="cd-list">
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background: linear-gradient(135deg, #1a5276, #2e86c1, #85c1e9);">♪</div>
+							<p class="song-title">《潮汐之歌》</p>
+							<p class="song-desc">"海浪的声音是最美的摇篮曲"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background: linear-gradient(135deg, #ff6b81, #a29bfe, #85c1e9);">♫</div>
+							<p class="song-title">《珊瑚低语》</p>
+							<p class="song-desc">"珊瑚礁上的生命交响曲"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background: linear-gradient(135deg, #0a2a43, #1a5276, #4a9bd9);">♪</div>
+							<p class="song-title">《深海蓝调》</p>
+							<p class="song-desc">"在寂静中听见海洋的心跳"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background: linear-gradient(135deg, #85c1e9, #2e86c1, #1a5276);">♫</div>
+							<p class="song-title">《海豚之梦》</p>
+							<p class="song-desc">"追逐海豚的跳跃，追逐自由"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background: linear-gradient(135deg, #d4e6f1, #85c1e9, #2e86c1);">♪</div>
+							<p class="song-title">《月光海面》</p>
+							<p class="song-desc">"月光洒在海面上，波光粼粼"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background: linear-gradient(135deg, #0a2a43, #a29bfe, #ff9f7f);">♫</div>
+							<p class="song-title">《海底星空》</p>
+							<p class="song-desc">"深海里也有闪烁的星光"</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="singer-section">
+					<h3>🎤 海洋歌手</h3>
+					<div class="left">
+						<h4>海洋之声</h4>
+						<div class="singer-card">
+							<div class="singer-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#1a5276,#2e86c1,#85c1e9,#a29bfe);">🎤</div>
+							<div class="singer-text">
+								<h5>🎵 深海歌单 TOP 8</h5>
+								<ul class="song-list">
+									<li>《潮汐之歌》</li>
+									<li>《珊瑚低语》</li>
+									<li>《深海蓝调》</li>
+									<li>《海豚之梦》</li>
+									<li>《月光海面》</li>
+									<li>《海底星空》</li>
+									<li>《海风轻拂》</li>
+									<li>《浪花飞溅》</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="right">
+						<h4>深海回响</h4>
+						<div class="singer-card">
+							<div class="singer-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#ff6b81,#a29bfe,#2e86c1,#0a2a43);">🎤</div>
+							<div class="singer-text">
+								<h5>🎵 海洋歌单 TOP 8</h5>
+								<ul class="song-list">
+									<li>《深海回响》</li>
+									<li>《海星之舞》</li>
+									<li>《水母灯笼》</li>
+									<li>《贝壳之歌》</li>
+									<li>《海草摇曳》</li>
+									<li>《海龟旅程》</li>
+									<li>《章鱼之墨》</li>
+									<li>《海马华尔兹》</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 国漫 -->
+		<div id="anime">
+			<div class="main-content">
+				<h2>🎬 国漫殿堂</h2>
+				<div class="cd-section">
+					<h3>🔥 热血国漫推荐</h3>
+					<p class="cd-intro">这些国漫作品承载着中国动画的崛起，每一部都是匠心之作</p>
+					<div class="cd-list">
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background:linear-gradient(135deg,#0a2a43,#1a5276,#4a9bd9,#85c1e9);">🌟</div>
+							<p class="song-title">《吞噬星空》</p>
+							<p class="song-desc">"科幻修炼，宇宙称霸"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background:linear-gradient(135deg,#1a5276,#a29bfe,#ff6b81,#ff9f7f);">⚔️</div>
+							<p class="song-title">《仙逆》</p>
+							<p class="song-desc">"逆天改命，修仙之路"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background:linear-gradient(135deg,#2e86c1,#1a5276,#0a2a43,#a29bfe);">🗡️</div>
+							<p class="song-title">《画江湖之不良人》</p>
+							<p class="song-desc">"武侠江湖，龙泉秘辛"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background:linear-gradient(135deg,#ff9f7f,#ff6b81,#a29bfe,#2e86c1);">🐑</div>
+							<p class="song-title">《牧神记》</p>
+							<p class="song-desc">"大墟少年，热血修炼"</p>
+						</div>
+						<div class="cd-card">
+							<div class="cd-placeholder" style="background:linear-gradient(135deg,#85c1e9,#2e86c1,#1a5276,#ff6b81);">👊</div>
+							<p class="song-title">《一人之下》</p>
+							<p class="song-desc">"异人世界，道教玄幻"</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="singer-section">
+					<h3>📺 国漫详情</h3>
+					<div class="left">
+						<h4>吞噬星空</h4>
+						<div class="singer-card">
+							<div class="singer-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#0a2a43,#1a5276,#4a9bd9,#85c1e9);">🌌</div>
+							<div class="singer-text">
+								<h5>作品信息</h5>
+								<ul class="song-list">
+									<li>原著：我吃西红柿</li>
+									<li>类型：科幻/修炼/冒险</li>
+									<li>出品：腾讯视频</li>
+									<li>简介：地球经历大灾难后，人类文明重新崛起</li>
+									<li>主角罗峰从普通武者成长为宇宙强者</li>
+									<li>建模精良，战斗场面震撼</li>
+									<li>国漫科幻巅峰之作</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="right">
+						<h4>仙逆</h4>
+						<div class="singer-card">
+							<div class="singer-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#a29bfe,#ff6b81,#1a5276,#0a2a43);">🏔️</div>
+							<div class="singer-text">
+								<h5>作品信息</h5>
+								<ul class="song-list">
+									<li>原著：耳根</li>
+									<li>类型：仙侠/修仙</li>
+									<li>主角：王林</li>
+									<li>资质平庸却坚韧不拔</li>
+									<li>逆天改命，走上修仙之路</li>
+									<li>还原度极高，深受原著粉喜爱</li>
+									<li>热血与感动并存</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="left">
+						<h4>画江湖之不良人</h4>
+						<div class="singer-card">
+							<div class="singer-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#2e86c1,#1a5276,#ff9f7f,#ff6b81);">⚔️</div>
+							<div class="singer-text">
+								<h5>作品信息</h5>
+								<ul class="song-list">
+									<li>制作：若森数字</li>
+									<li>类型：武侠/历史</li>
+									<li>背景：五代十国</li>
+									<li>围绕神秘组织"不良人"展开</li>
+									<li>融合真实历史与武侠幻想</li>
+									<li>角色众多，剧情跌宕起伏</li>
+									<li>经典国漫代表作</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="right">
+						<h4>牧神记</h4>
+						<div class="singer-card">
+							<div class="singer-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#ff9f7f,#ff6b81,#a29bfe,#2e86c1);">📜</div>
+							<div class="singer-text">
+								<h5>作品信息</h5>
+								<ul class="song-list">
+									<li>原著：宅猪</li>
+									<li>类型：玄幻/修炼</li>
+									<li>主角：秦牧</li>
+									<li>大墟中被遗弃的少年</li>
+									<li>跟随残老村高手学习</li>
+									<li>世界观宏大，战斗体系独特</li>
+									<li>兼具热血与幽默</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="left">
+						<h4>一人之下</h4>
+						<div class="singer-card">
+							<div class="singer-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#85c1e9,#2e86c1,#ff6b81,#a29bfe);">👊</div>
+							<div class="singer-text">
+								<h5>作品信息</h5>
+								<ul class="song-list">
+									<li>类型：现代/玄幻/格斗</li>
+									<li>主角：张楚岚、冯宝宝</li>
+									<li>融合中国道教文化</li>
+									<li>异能战斗元素丰富</li>
+									<li>国漫代表作之一</li>
+									<li>极具中国特色</li>
+									<li>口碑与人气双丰收</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 运动 -->
+		<div id="sport">
+			<div class="main-content">
+				<h2>🏊 海洋运动场</h2>
+				<div class="sport-row">
+					<div class="sport-box">
+						<h3>冲浪</h3>
+						<p>在浪尖上舞蹈，感受海洋的力量</p>
+						<p>它教会我勇敢面对挑战</p>
+						<div class="sport-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#4a9bd9,#85c1e9,#d4e6f1,#85c1e9);">🏄</div>
+						<p class="tip">点击可查看详情</p>
+					</div>
+					<div class="sport-box">
+						<div class="sport-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#0a2a43,#1a5276,#2e86c1,#4a9bd9);">🏊</div>
+						<h3>深潜</h3>
+						<p>探索深海的奥秘，聆听海底的声音</p>
+						<p>它教会我静心感受</p>
+					</div>
+					<div class="sport-box">
+						<h3>帆船</h3>
+						<p>乘风破浪，追逐海平线的尽头</p>
+						<p>它教会我坚持与方向</p>
+						<div class="sport-img" style="display:flex;align-items:center;justify-content:center;font-size:48px;color:#fff;background:linear-gradient(135deg,#85c1e9,#2e86c1,#1a5276,#0a2a43);">⛵</div>
+						<p class="tip">点击可查看详情</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 摄影 -->
+		<div id="photo">
+			<div class="main-content">
+				<h2>📷 海底摄影集</h2>
+				<p class="photo-intro">用镜头定格深海的奇迹，每一张照片都有属于它的海洋故事</p>
+				<div class="photo-album">
+					<div class="photo-placeholder" style="background:linear-gradient(180deg,#ff6b81,#a29bfe,#2e86c1,#0a2a43);"></div>
+					<div class="photo-placeholder" style="background:linear-gradient(180deg,#0a2a43,#1a5276,#4a9bd9,#85c1e9);"></div>
+					<div class="photo-placeholder" style="background:linear-gradient(180deg,#85c1e9,#2e86c1,#a29bfe,#ff9f7f);"></div>
+					<div class="photo-placeholder" style="background:linear-gradient(180deg,#ff9f7f,#ff6b81,#a29bfe,#2e86c1);"></div>
+					<div class="photo-placeholder" style="background:linear-gradient(180deg,#2e86c1,#85c1e9,#d4e6f1,#85c1e9);"></div>
+					<div class="photo-placeholder" style="background:linear-gradient(180deg,#a29bfe,#ff6b81,#ff9f7f,#2e86c1);"></div>
+					<div class="photo-placeholder" style="background:linear-gradient(180deg,#1a5276,#2e86c1,#85c1e9,#d4e6f1);"></div>
+					<div class="photo-placeholder" style="background:linear-gradient(180deg,#d4e6f1,#85c1e9,#2e86c1,#0a2a43);"></div>
+				</div>
+				<p class="tip">鼠标移入可展开海底照片</p>
+			</div>
+		</div>
+
+		<!-- 左侧导航 -->
+		<div class="box">
+			<a href="../index.html">海底入口</a>
+			<a href="home.html">海洋主页</a>
+			<a href="detail.html" class="active">深海探索</a>
+			<a href="message.html">珊瑚留言</a>
+		</div>
+
+		<!-- 返回顶部 -->
+		<div class="box-right">
+			<a href="#intro"></a>
+		</div>
+
+		<!-- 结束语 -->
+		<div id="end">
+			<p>谢谢你陪我潜了一圈深海 🐚</p>
+			<p>海洋是我和世界之间最深邃的连接，也是我与自己独处时最宁静的存在</p>
+			<p>如果你在这片蔚蓝中看到了自己的影子，或者也有想分享的海洋故事</p>
+			<p>欢迎在珊瑚留言区给我写一封信 🐬</p>
+		</div>
+
+		<!-- 页脚 -->
+		<div id="footer">
+			<p>
+				<a href="#music">音乐</a> |
+				<a href="#anime">国漫</a> |
+				<a href="#sport">运动</a> |
+				<a href="#photo">摄影</a>
+			</p>
+			<p>
+				电话：XXX-XXXX-XXXX&nbsp;&nbsp;&nbsp;&nbsp;E-mail: example@qq.com&nbsp;&nbsp;&nbsp;&nbsp;地址：你的地址
+			</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,355 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑", sans-serif;
+	background:
+		/* 海底光线效果 */
+		linear-gradient(180deg,
+			rgba(135, 206, 235, 0.12) 0%,
+			transparent 20%),
+		linear-gradient(135deg,
+			rgba(255, 255, 255, 0.06) 0%,
+			transparent 30%),
+		linear-gradient(225deg,
+			rgba(255, 255, 255, 0.04) 0%,
+			transparent 25%),
+		/* 海底渐变 */
+		linear-gradient(180deg,
+			#0a2a43 0%,
+			#0d3458 15%,
+			#1a5276 30%,
+			#1f6b8a 45%,
+			#2e86c1 60%,
+			#4a9bd9 75%,
+			#85c1e9 90%,
+			#1a5276 100%);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	overflow-x: hidden;
+	min-height: 100vh;
+}
+
+/* 海底珊瑚礁装饰 */
+body::before {
+	content: "";
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 25%;
+	background:
+		/* 珊瑚形状 */
+		radial-gradient(ellipse at 10% 90%, #ff6b81 0%, transparent 18%),
+		radial-gradient(ellipse at 30% 95%, #a29bfe 0%, transparent 14%),
+		radial-gradient(ellipse at 50% 88%, #ff9f7f 0%, transparent 16%),
+		radial-gradient(ellipse at 70% 92%, #ff6b81 0%, transparent 20%),
+		radial-gradient(ellipse at 90% 85%, #a29bfe 0%, transparent 15%),
+		/* 海草形状 */
+		linear-gradient(180deg, transparent 70%, rgba(46, 204, 113, 0.25) 100%);
+	opacity: 0.5;
+	z-index: 0;
+	pointer-events: none;
+}
+
+/* 海底气泡 */
+body::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image:
+		/* 大气泡 */
+		radial-gradient(circle at 12% 75%, rgba(255,255,255,0.35) 7px, transparent 7px),
+		radial-gradient(circle at 32% 65%, rgba(173,216,230,0.45) 10px, transparent 10px),
+		radial-gradient(circle at 52% 80%, rgba(255,255,255,0.3) 5px, transparent 5px),
+		radial-gradient(circle at 72% 70%, rgba(173,216,230,0.4) 8px, transparent 8px),
+		radial-gradient(circle at 92% 60%, rgba(255,255,255,0.45) 12px, transparent 12px),
+		/* 小气泡 */
+		radial-gradient(circle at 18% 50%, rgba(255,255,255,0.25) 3px, transparent 3px),
+		radial-gradient(circle at 38% 45%, rgba(173,216,230,0.35) 4px, transparent 4px),
+		radial-gradient(circle at 58% 40%, rgba(255,255,255,0.25) 3px, transparent 3px),
+		radial-gradient(circle at 78% 35%, rgba(173,216,230,0.35) 4px, transparent 4px),
+		radial-gradient(circle at 95% 30%, rgba(255,255,255,0.25) 3px, transparent 3px);
+	animation: bubble-rise 25s linear infinite;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* ===== 顶部标题区 ===== */
+#header {
+	width: 100%;
+}
+#header .message-header {
+	width: 1100px;
+	margin: 0 auto 30px;
+	padding: 28px 40px;
+	background: rgba(10, 42, 67, 0.6);
+	border-radius: 0 0 24px 24px;
+	font-family: "微软雅黑", sans-serif;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+	color: #ecf0f1;
+	text-align: center;
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.2);
+	border-top: none;
+}
+#header .message-header h1 {
+	color: #85c1e9;
+	font-size: 30px;
+	margin-bottom: 12px;
+}
+#header .message-header p {
+	line-height: 26px;
+	font-size: 15px;
+	color: #bdc3c7;
+}
+
+/* ===== 留言板 ===== */
+#board1 {
+	width: 1200px;
+	margin: auto;
+	padding: 10px 100px;
+}
+#board1 .form-section {
+	margin: 10px auto;
+	background: rgba(10, 42, 67, 0.6);
+	border-radius: 24px;
+	padding: 30px 100px;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.2);
+}
+#board1 .form-section h2 {
+	text-align: center;
+	color: #85c1e9;
+	font-size: 26px;
+	margin-bottom: 24px;
+}
+#board1 .form-section .message-form {
+	margin: 0 auto;
+	font-size: 16px;
+	line-height: 40px;
+}
+#board1 .form-section .message-form .block1 {
+	width: 500px;
+	float: left;
+}
+#board1 .form-section .message-form label {
+	padding: 24px;
+	color: #d4e6f1;
+	font-weight: 500;
+}
+#board1 .form-section .message-form input {
+	width: 320px;
+	margin: 8px auto;
+	padding: 14px 18px;
+	font-size: 15px;
+	border: 2px solid rgba(135, 206, 235, 0.3);
+	border-radius: 12px;
+	background: rgba(10, 42, 67, 0.5);
+	color: #ecf0f1;
+	outline: none;
+	transition: border-color 0.3s;
+	backdrop-filter: blur(10px);
+}
+#board1 .form-section .message-form input:focus {
+	border-color: #85c1e9;
+	box-shadow: 0 0 0 3px rgba(133, 193, 233, 0.2);
+}
+#board1 .form-section .message-form textarea {
+	width: 900px;
+	margin-top: 10px;
+	margin-left: 24px;
+	padding: 16px 18px;
+	font-size: 15px;
+	border: 2px solid rgba(135, 206, 235, 0.3);
+	border-radius: 12px;
+	background: rgba(10, 42, 67, 0.5);
+	color: #ecf0f1;
+	outline: none;
+	resize: vertical;
+	transition: border-color 0.3s;
+	backdrop-filter: blur(10px);
+}
+#board1 .form-section .message-form textarea:focus {
+	border-color: #85c1e9;
+	box-shadow: 0 0 0 3px rgba(133, 193, 233, 0.2);
+}
+#board1 .form-section .message-form .submit {
+	text-align: center;
+}
+#board1 .form-section .message-form button {
+	margin: 16px auto;
+	padding: 12px 40px;
+	font-size: 20px;
+	color: #fff;
+	background: linear-gradient(135deg, rgba(46, 134, 193, 0.8), rgba(133, 193, 233, 0.8));
+	border: none;
+	border-radius: 24px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(46, 134, 193, 0.4);
+	backdrop-filter: blur(10px);
+}
+#board1 .form-section .message-form button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(46, 134, 193, 0.5);
+	background: linear-gradient(135deg, #2e86c1, #85c1e9);
+}
+
+/* ===== 登记表 ===== */
+#board2 {
+	width: 1200px;
+	margin: auto;
+	padding: 10px 100px;
+}
+#board2 .form-section {
+	margin: 10px auto;
+	background: rgba(10, 42, 67, 0.6);
+	border-radius: 24px;
+	padding: 30px 100px;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.2);
+}
+#board2 .form-section h2 {
+	text-align: center;
+	color: #85c1e9;
+	font-size: 26px;
+	margin-bottom: 24px;
+}
+#board2 .form-section .info-form {
+	margin: 0 auto;
+	font-size: 16px;
+	line-height: 40px;
+}
+#board2 .form-section .info-form fieldset {
+	border: none;
+	border-top: 2px solid rgba(135, 206, 235, 0.3);
+	margin: 16px 0;
+	padding: 16px 0;
+}
+#board2 .form-section .info-form fieldset legend {
+	font-weight: bold;
+	color: #85c1e9;
+	font-size: 22px;
+	padding: 0 12px;
+}
+#board2 .form-section .info-form fieldset label {
+	padding: 24px;
+	color: #d4e6f1;
+	font-weight: 500;
+}
+#board2 .form-section .info-form .form1 fieldset .block1 {
+	width: 500px;
+	float: left;
+}
+#board2 .form-section .info-form .form1 input,
+#board2 .form-section .info-form .form1 select {
+	width: 320px;
+	margin: 8px auto;
+	padding: 14px 18px;
+	font-size: 15px;
+	border: 2px solid rgba(135, 206, 235, 0.3);
+	border-radius: 12px;
+	background: rgba(10, 42, 67, 0.5);
+	color: #ecf0f1;
+	outline: none;
+	transition: border-color 0.3s;
+	backdrop-filter: blur(10px);
+}
+#board2 .form-section .info-form .form1 input:focus,
+#board2 .form-section .info-form .form1 select:focus {
+	border-color: #85c1e9;
+	box-shadow: 0 0 0 3px rgba(133, 193, 233, 0.2);
+}
+#board2 .form-section .info-form .form2 fieldset p {
+	width: 900px;
+	margin-left: 24px;
+	line-height: 40px;
+	font-size: 15px;
+	color: #d4e6f1;
+}
+#board2 .form-section .info-form textarea {
+	width: 900px;
+	margin-top: 10px;
+	margin-left: 24px;
+	padding: 16px 18px;
+	font-size: 15px;
+	border: 2px solid rgba(135, 206, 235, 0.3);
+	border-radius: 12px;
+	background: rgba(10, 42, 67, 0.5);
+	color: #ecf0f1;
+	outline: none;
+	resize: vertical;
+	backdrop-filter: blur(10px);
+}
+#board2 .form-section .info-form textarea:focus {
+	border-color: #85c1e9;
+	box-shadow: 0 0 0 3px rgba(133, 193, 233, 0.2);
+}
+#board2 .form-section .info-form .submit {
+	text-align: center;
+}
+#board2 .form-section .info-form button {
+	margin: 16px auto;
+	padding: 12px 40px;
+	font-size: 20px;
+	color: #fff;
+	background: linear-gradient(135deg, rgba(46, 134, 193, 0.8), rgba(133, 193, 233, 0.8));
+	border: none;
+	border-radius: 24px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(46, 134, 193, 0.4);
+	backdrop-filter: blur(10px);
+}
+#board2 .form-section .info-form button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(46, 134, 193, 0.5);
+	background: linear-gradient(135deg, #2e86c1, #85c1e9);
+}
+
+/* ===== 日历 ===== */
+#date {
+	width: 1200px;
+	margin: auto;
+	padding: 10px 100px 40px;
+}
+#date .calendar-section {
+	margin: 10px auto;
+	background: rgba(10, 42, 67, 0.6);
+	border-radius: 24px;
+	padding: 30px 60px;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.2);
+}
+#date .calendar-section h2 {
+	text-align: center;
+	color: #85c1e9;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+#date .calendar-section .calendar-table {
+	width: 100%;
+	border-spacing: 0;
+	text-align: center;
+}
+#date .calendar-section .calendar-table td {
+	border: 1px solid rgba(135, 206, 235, 0.2);
+	background: rgba(46, 134, 193, 0.15);
+	padding: 14px;
+	font-size: 15px;
+	color: #d4e6f1;
+	border-radius: 8px;
+	backdrop-filter: blur(5px);
+}
+#date .calendar-section .calendar-table .day {
+	background: linear-gradient(135deg, rgba(46, 134, 193, 0.8), rgba(133, 193, 233, 0.8));
+	color: #fff;
+	font-weight: bold;
+}

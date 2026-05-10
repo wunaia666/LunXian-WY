@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>我的海底世界 🐠</title>
+		<link rel="stylesheet" href="../css/ocean-theme.css" />
+		<link rel="stylesheet" href="../css/home.css" />
+		<link rel="stylesheet" href="../css/base.css" />
+		<style>
+			/* 图标进入动画 */
+			.icon-item {
+				animation: fadeInScale 0.6s ease forwards;
+				opacity: 0;
+			}
+
+			.icon-item:nth-child(1) { animation-delay: 0.2s; }
+			.icon-item:nth-child(2) { animation-delay: 0.4s; }
+			.icon-item:nth-child(3) { animation-delay: 0.6s; }
+			.icon-item:nth-child(4) { animation-delay: 0.8s; }
+
+			@keyframes fadeInScale {
+				from {
+					opacity: 0;
+					transform: scale(0.5) translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: scale(1) translateY(0);
+				}
+			}
+
+			/* 图标脉冲效果 */
+			.icon-placeholder {
+				position: relative;
+			}
+
+			.icon-placeholder::after {
+				content: "";
+				position: absolute;
+				top: -5px;
+				left: -5px;
+				right: -5px;
+				bottom: -5px;
+				border-radius: 30px;
+				border: 2px solid rgba(133, 193, 233, 0.4);
+				animation: pulse-ring 2s ease-out infinite;
+			}
+
+			@keyframes pulse-ring {
+				0% {
+					transform: scale(1);
+					opacity: 1;
+				}
+				100% {
+					transform: scale(1.2);
+					opacity: 0;
+				}
+			}
+
+			/* 海洋生物装饰 */
+			.sea-creature {
+				position: fixed;
+				font-size: 32px;
+				opacity: 0.4;
+				animation: swim 15s linear infinite;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			@keyframes swim {
+				0% {
+					transform: translateX(-100px) translateY(0);
+				}
+				25% {
+					transform: translateX(25vw) translateY(-20px);
+				}
+				50% {
+					transform: translateX(50vw) translateY(10px);
+				}
+				75% {
+					transform: translateX(75vw) translateY(-15px);
+				}
+				100% {
+					transform: translateX(calc(100vw + 100px)) translateY(0);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 海洋生物装饰 -->
+		<div class="sea-creature" style="top: 30%; animation-delay: 0s;">🐠</div>
+		<div class="sea-creature" style="top: 50%; animation-delay: 5s;">🐡</div>
+		<div class="sea-creature" style="top: 70%; animation-delay: 10s;">🦈</div>
+
+		<div id="main-body">
+			<div class="my-content">
+				<div class="my-information">
+					<h2>你好呀，欢迎来到我的海底世界 🐚</h2>
+					<p>这里是蔚蓝深海中的一片秘密花园</p>
+					<p>我在这里聆听珊瑚的低语，追逐鱼群的光影</p>
+					<p>用音乐记录潮汐的节奏，用镜头捕捉海底的奇迹</p>
+					<p>在国漫世界中感受热血与激情</p>
+					<p>&nbsp;</p>
+					<p>下方是通往海底不同角落的通道，点击它们探索我的海洋世界</p>
+					<p>愿你在这片蔚蓝中，找到属于自己的宁静与美好 🐬</p>
+				</div>
+
+				<div class="icons-container">
+					<div class="icon-item">
+						<a href="detail.html#music">
+							<div class="icon-placeholder">🎵</div>
+						</a>
+						<p>海洋音乐</p>
+					</div>
+					<div class="icon-item">
+						<a href="detail.html#photo">
+							<div class="icon-placeholder">📷</div>
+						</a>
+						<p>海底摄影</p>
+					</div>
+					<div class="icon-item">
+						<a href="detail.html#anime">
+							<div class="icon-placeholder">🎬</div>
+						</a>
+						<p>国漫殿堂</p>
+					</div>
+					<div class="icon-item">
+						<a href="detail.html#sport">
+							<div class="icon-placeholder">🏊</div>
+						</a>
+						<p>海洋运动</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 左侧导航 -->
+		<div class="box">
+			<a href="../index.html">海底入口</a>
+			<a href="home.html" class="active">海洋主页</a>
+			<a href="detail.html">深海探索</a>
+			<a href="message.html">珊瑚留言</a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,444 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background:
+		/* 海底光线效果 */
+		linear-gradient(180deg,
+			rgba(135, 206, 235, 0.1) 0%,
+			transparent 20%),
+		linear-gradient(135deg,
+			rgba(255, 255, 255, 0.05) 0%,
+			transparent 30%),
+		linear-gradient(225deg,
+			rgba(255, 255, 255, 0.03) 0%,
+			transparent 25%),
+		/* 海底渐变 */
+		linear-gradient(180deg,
+			#0a2a43 0%,
+			#0d3458 15%,
+			#1a5276 30%,
+			#1f6b8a 45%,
+			#2e86c1 60%,
+			#4a9bd9 75%,
+			#85c1e9 90%,
+			#1a5276 100%);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	min-height: 100vh;
+}
+
+/* 海底珊瑚礁装饰 */
+body::before {
+	content: "";
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 20%;
+	background:
+		/* 珊瑚形状 */
+		radial-gradient(ellipse at 12% 88%, #ff6b81 0%, transparent 15%),
+		radial-gradient(ellipse at 28% 92%, #a29bfe 0%, transparent 12%),
+		radial-gradient(ellipse at 45% 85%, #ff9f7f 0%, transparent 14%),
+		radial-gradient(ellipse at 62% 90%, #ff6b81 0%, transparent 16%),
+		radial-gradient(ellipse at 78% 88%, #a29bfe 0%, transparent 13%),
+		radial-gradient(ellipse at 92% 85%, #ff9f7f 0%, transparent 15%),
+		/* 海草形状 */
+		linear-gradient(180deg, transparent 75%, rgba(46, 204, 113, 0.2) 100%);
+	opacity: 0.5;
+	z-index: 0;
+	pointer-events: none;
+}
+
+/* 海底气泡 */
+body::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image:
+		/* 大气泡 */
+		radial-gradient(circle at 8% 70%, rgba(255,255,255,0.3) 6px, transparent 6px),
+		radial-gradient(circle at 25% 60%, rgba(173,216,230,0.4) 9px, transparent 9px),
+		radial-gradient(circle at 42% 75%, rgba(255,255,255,0.25) 5px, transparent 5px),
+		radial-gradient(circle at 58% 65%, rgba(173,216,230,0.35) 7px, transparent 7px),
+		radial-gradient(circle at 75% 55%, rgba(255,255,255,0.4) 10px, transparent 10px),
+		radial-gradient(circle at 92% 50%, rgba(173,216,230,0.3) 8px, transparent 8px),
+		/* 小气泡 */
+		radial-gradient(circle at 15% 45%, rgba(255,255,255,0.2) 3px, transparent 3px),
+		radial-gradient(circle at 35% 40%, rgba(173,216,230,0.3) 4px, transparent 4px),
+		radial-gradient(circle at 55% 35%, rgba(255,255,255,0.2) 3px, transparent 3px),
+		radial-gradient(circle at 75% 30%, rgba(173,216,230,0.3) 4px, transparent 4px),
+		radial-gradient(circle at 90% 25%, rgba(255,255,255,0.2) 3px, transparent 3px);
+	animation: bubble-rise 30s linear infinite;
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* ===== 顶部介绍区 ===== */
+#intro {
+	width: 100%;
+	padding: 30px 0 10px;
+}
+#intro .intro-content {
+	width: 1000px;
+	margin: 0 auto 30px;
+	padding: 28px 40px;
+	background: rgba(10, 42, 67, 0.6);
+	border-radius: 22px;
+	font-family: "微软雅黑", sans-serif;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+	color: #ecf0f1;
+	text-align: center;
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.2);
+}
+#intro .intro-content h2 {
+	color: #85c1e9;
+	font-size: 28px;
+	margin-bottom: 14px;
+}
+#intro .intro-content p {
+	line-height: 26px;
+	font-size: 15px;
+	color: #d4e6f1;
+}
+
+/* ===== 导航按钮条 ===== */
+#nav {
+	text-align: center;
+	margin: 28px auto;
+	width: 900px;
+}
+#nav a {
+	display: inline-block;
+	margin: 0 16px;
+	padding: 12px 32px;
+	background: linear-gradient(135deg, rgba(46, 134, 193, 0.8), rgba(133, 193, 233, 0.8));
+	border-radius: 24px;
+	color: #fff;
+	font-weight: bold;
+	font-size: 18px;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(46, 134, 193, 0.4);
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(135, 206, 235, 0.3);
+}
+#nav a:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(46, 134, 193, 0.5);
+	background: linear-gradient(135deg, #2e86c1, #85c1e9);
+}
+
+/* ===== 音乐板块 ===== */
+#music {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 48px 0;
+	background: rgba(10, 42, 67, 0.5);
+	border-radius: 24px;
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.15);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+#music .main-content h2 {
+	font-size: 28px;
+	text-align: center;
+	margin-bottom: 24px;
+	color: #85c1e9;
+}
+
+/* CD唱片区 */
+#music .main-content .cd-section {
+	text-align: center;
+	padding: 24px 0;
+	background: rgba(46, 134, 193, 0.15);
+	border-radius: 20px;
+	margin: 0 30px;
+	border: 1px solid rgba(135, 206, 235, 0.1);
+}
+#music .main-content .cd-section h3 {
+	font-size: 24px;
+	color: #85c1e9;
+	margin-bottom: 10px;
+}
+#music .main-content .cd-section .cd-intro {
+	font-size: 14px;
+	margin-bottom: 30px;
+	color: #bdc3c7;
+}
+#music .main-content .cd-section .cd-list {
+	text-align: center;
+}
+#music .main-content .cd-section .cd-list .cd-card {
+	display: inline-block;
+	width: 170px;
+	margin: 12px;
+	vertical-align: top;
+}
+#music .main-content .cd-section .cd-list .cd-card img,
+#music .main-content .cd-section .cd-list .cd-card .cd-placeholder {
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+	object-fit: cover;
+	transition: transform 8s ease-in-out;
+	background: linear-gradient(135deg, rgba(46, 134, 193, 0.8), rgba(133, 193, 233, 0.8));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 36px;
+	color: #fff;
+	margin: 0 auto;
+	border: 3px solid rgba(135, 206, 235, 0.3);
+}
+#music .main-content .cd-section .cd-list .cd-card:hover img,
+#music .main-content .cd-section .cd-list .cd-card:hover .cd-placeholder {
+	transform: rotate(360deg);
+	border-color: rgba(135, 206, 235, 0.6);
+	box-shadow: 0 12px 30px rgba(46, 134, 193, 0.4);
+}
+#music .main-content .cd-section .cd-list .cd-card .song-title {
+	margin-top: 12px;
+	font-size: 15px;
+	font-weight: bold;
+	color: #d4e6f1;
+}
+#music .main-content .cd-section .cd-list .cd-card .song-desc {
+	font-size: 12px;
+	color: #bdc3c7;
+	margin-top: 6px;
+	font-style: italic;
+}
+
+/* 歌手区 */
+#music .main-content .singer-section {
+	padding-top: 48px;
+	text-align: center;
+}
+#music .main-content .singer-section h3 {
+	font-size: 24px;
+	color: #85c1e9;
+	margin-bottom: 16px;
+}
+#music .main-content .singer-section h4 {
+	font-size: 22px;
+	color: #85c1e9;
+	text-align: center;
+}
+#music .main-content .singer-section .singer-card {
+	width: 840px;
+	margin: 10px auto 40px;
+	background: rgba(10, 42, 67, 0.6);
+	border-radius: 22px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.15);
+}
+#music .main-content .singer-section .left .singer-card img,
+#music .main-content .singer-section .left .singer-card .singer-img {
+	float: left;
+	width: 280px;
+	height: 280px;
+	border-radius: 22px;
+	margin: 24px;
+	object-fit: cover;
+	background: linear-gradient(135deg, rgba(46, 134, 193, 0.8), rgba(133, 193, 233, 0.8));
+	border: 2px solid rgba(135, 206, 235, 0.2);
+}
+#music .main-content .singer-section .right .singer-card img,
+#music .main-content .singer-section .right .singer-card .singer-img {
+	float: right;
+	width: 280px;
+	height: 280px;
+	border-radius: 22px;
+	margin: 24px;
+	object-fit: cover;
+	background: linear-gradient(135deg, rgba(133, 193, 233, 0.8), rgba(46, 134, 193, 0.8));
+	border: 2px solid rgba(135, 206, 235, 0.2);
+}
+#music .main-content .singer-section .singer-card .singer-text {
+	padding: 24px;
+}
+#music .main-content .singer-section .singer-card .singer-text h5 {
+	font-size: 20px;
+	color: #85c1e9;
+	margin: 0 0 16px;
+}
+#music .main-content .singer-section .singer-card .singer-text .song-list li {
+	font-size: 14px;
+	color: #d4e6f1;
+	line-height: 26px;
+	margin-bottom: 4px;
+}
+
+/* ===== 国漫板块 ===== */
+#anime {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 48px 0;
+	background: rgba(10, 42, 67, 0.5);
+	backdrop-filter: blur(15px);
+	border-radius: 24px;
+	border: 1px solid rgba(135, 206, 235, 0.15);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+#anime .main-content h2 {
+	font-size: 28px;
+	text-align: center;
+	margin-bottom: 24px;
+	color: #85c1e9;
+}
+
+/* ===== 运动板块 ===== */
+#sport {
+	width: 1200px;
+	margin: 0 auto;
+	padding: 48px 0;
+	background: rgba(10, 42, 67, 0.5);
+	border-radius: 24px;
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.15);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+#sport .main-content h2 {
+	font-size: 28px;
+	text-align: center;
+	margin-bottom: 24px;
+	color: #85c1e9;
+}
+#sport .main-content .sport-row {
+	text-align: center;
+	margin-top: 30px;
+}
+#sport .main-content .sport-row .sport-box {
+	display: inline-block;
+	width: 260px;
+	margin: 12px;
+	padding: 20px;
+	background: rgba(46, 134, 193, 0.15);
+	border-radius: 20px;
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+	vertical-align: top;
+	transition: transform 0.3s ease;
+	backdrop-filter: blur(10px);
+	border: 1px solid rgba(135, 206, 235, 0.1);
+}
+#sport .main-content .sport-row .sport-box:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 30px rgba(46, 134, 193, 0.3);
+	border-color: rgba(135, 206, 235, 0.3);
+}
+#sport .main-content .sport-row .sport-box h3 {
+	font-size: 22px;
+	margin: 12px 0;
+	color: #85c1e9;
+}
+#sport .main-content .sport-row .sport-box img,
+#sport .main-content .sport-row .sport-box .sport-img {
+	width: 260px;
+	height: 180px;
+	border-radius: 16px;
+	margin-top: 12px;
+	object-fit: cover;
+	background: linear-gradient(135deg, rgba(46, 134, 193, 0.8), rgba(133, 193, 233, 0.8));
+	border: 1px solid rgba(135, 206, 235, 0.2);
+}
+#sport .main-content .sport-row .sport-box p {
+	font-size: 14px;
+	color: #bdc3c7;
+	line-height: 22px;
+	margin-top: 8px;
+}
+#sport .main-content .sport-row .sport-box .tip {
+	font-size: 12px;
+	color: #85c1e9;
+}
+
+/* ===== 摄影板块 ===== */
+#photo {
+	width: 1200px;
+	margin: 0 auto;
+}
+#photo .main-content {
+	margin: 0 auto;
+	padding: 48px 0 24px;
+	text-align: center;
+	background: rgba(10, 42, 67, 0.5);
+	border-radius: 24px;
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.15);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+#photo .main-content h2 {
+	font-size: 28px;
+	margin-bottom: 20px;
+	color: #85c1e9;
+}
+#photo .main-content .photo-intro {
+	font-size: 15px;
+	margin-bottom: 30px;
+	color: #bdc3c7;
+}
+#photo .main-content .photo-album {
+	height: 420px;
+	text-align: center;
+	margin: 10px auto;
+	border-radius: 20px;
+	overflow: hidden;
+}
+#photo .main-content .photo-album img,
+#photo .main-content .photo-album .photo-placeholder {
+	width: 72px;
+	height: 420px;
+	border-right: 3px solid rgba(135, 206, 235, 0.3);
+	transition: width 0.5s ease;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	object-fit: cover;
+	background: linear-gradient(180deg, rgba(46, 134, 193, 0.8), rgba(133, 193, 233, 0.8), rgba(46, 134, 193, 0.8));
+}
+#photo .main-content .photo-album img:hover,
+#photo .main-content .photo-album .photo-placeholder:hover {
+	width: 500px;
+	z-index: 2;
+	box-shadow: 0 8px 24px rgba(46, 134, 193, 0.4);
+}
+#photo .main-content .photo-album img:first-child,
+#photo .main-content .photo-album .photo-placeholder:first-child {
+	border-radius: 20px 0 0 20px;
+}
+#photo .main-content .photo-album img:last-child,
+#photo .main-content .photo-album .photo-placeholder:last-child {
+	border-right: none;
+	border-radius: 0 20px 20px 0;
+}
+#photo .main-content .tip {
+	font-size: 13px;
+	color: #85c1e9;
+	margin-top: 16px;
+}
+
+/* ===== 结束语 ===== */
+#end {
+	width: 900px;
+	margin: 30px auto 40px;
+	padding: 28px 40px;
+	background: rgba(10, 42, 67, 0.6);
+	border-radius: 22px;
+	font-family: "微软雅黑", sans-serif;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+	color: #ecf0f1;
+	line-height: 26px;
+	font-size: 15px;
+	text-align: center;
+	backdrop-filter: blur(15px);
+	border: 1px solid rgba(135, 206, 235, 0.2);
+}

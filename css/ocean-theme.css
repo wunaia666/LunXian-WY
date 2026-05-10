@@ -1,0 +1,532 @@
+/* ===== 海底世界主题 ===== */
+:root {
+    /* 海洋配色 */
+    --ocean-deep: #0a2a43;
+    --ocean-mid: #1a5276;
+    --ocean-light: #2e86c1;
+    --ocean-surface: #85c1e9;
+    --ocean-foam: #d4e6f1;
+    --ocean-glow: #7fb3d8;
+
+    /* 珊瑚色 */
+    --coral-pink: #ff6b81;
+    --coral-orange: #ff9f7f;
+    --coral-purple: #a29bfe;
+
+    /* 沙滩色 */
+    --sand-light: #ffeaa7;
+    --sand-warm: #fdcb6e;
+
+    /* 泡泡色 */
+    --bubble-white: rgba(255, 255, 255, 0.3);
+    --bubble-glow: rgba(173, 216, 230, 0.4);
+
+    /* 文字 */
+    --text-light: #ecf0f1;
+    --text-soft: #bdc3c7;
+
+    /* 背景图路径 */
+    --bg-underwater: url('../img/underwater-bg.jpg');
+    --bg-ocean-floor: url('../img/ocean-floor.jpg');
+    --bg-coral-reef: url('../img/coral-reef.jpg');
+
+    /* 玻璃效果 */
+    --glass-bg: rgba(10, 42, 67, 0.6);
+    --glass-border: rgba(135, 206, 235, 0.2);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glass-blur: blur(20px);
+}
+
+/* 海底气泡动画 */
+@keyframes bubble-rise {
+    0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes float-gentle {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-15px) rotate(2deg);
+    }
+    75% {
+        transform: translateY(10px) rotate(-2deg);
+    }
+}
+
+@keyframes wave-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(133, 193, 233, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(133, 193, 233, 0.6);
+    }
+}
+
+@keyframes coral-sway {
+    0%, 100% {
+        transform: rotate(-2deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+}
+
+/* 海底光线效果 */
+.ocean-rays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(180deg,
+            rgba(135, 206, 235, 0.15) 0%,
+            transparent 30%),
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 20%),
+        linear-gradient(225deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 25%);
+    pointer-events: none;
+    z-index: 0;
+    animation: shimmer 8s ease-in-out infinite;
+}
+
+/* 通用玻璃卡片样式 */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(46, 134, 193, 0.4);
+    border-color: rgba(133, 193, 233, 0.4);
+}
+
+/* 海洋按钮样式 */
+.ocean-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: linear-gradient(135deg, var(--ocean-light), var(--ocean-surface));
+    color: var(--text-light);
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(46, 134, 193, 0.4);
+    text-decoration: none;
+}
+
+.ocean-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(46, 134, 193, 0.6);
+    background: linear-gradient(135deg, var(--ocean-surface), var(--ocean-light));
+}
+
+/* 海洋输入框样式 */
+.ocean-input {
+    width: 100%;
+    padding: 14px 20px;
+    background: rgba(10, 42, 67, 0.5);
+    border: 2px solid rgba(135, 206, 235, 0.3);
+    border-radius: 12px;
+    color: var(--text-light);
+    font-size: 15px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.ocean-input:focus {
+    outline: none;
+    border-color: var(--ocean-surface);
+    box-shadow: 0 0 0 3px rgba(133, 193, 233, 0.2);
+}
+
+/* 海洋标签样式 */
+.ocean-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(46, 134, 193, 0.3);
+    color: var(--ocean-surface);
+    border-radius: 20px;
+    font-size: 14px;
+    border: 1px solid rgba(133, 193, 233, 0.3);
+    transition: all 0.3s ease;
+}
+
+.ocean-tag:hover {
+    background: rgba(46, 134, 193, 0.5);
+    transform: scale(1.05);
+}
+
+/* 海洋分割线 */
+.ocean-divider {
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(133, 193, 233, 0.5),
+        transparent);
+    margin: 30px 0;
+    border: none;
+}
+
+/* 海洋图标容器 */
+.ocean-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--ocean-light), var(--ocean-surface));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    box-shadow: 0 8px 20px rgba(46, 134, 193, 0.4);
+    transition: all 0.3s ease;
+}
+
+.ocean-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 30px rgba(46, 134, 193, 0.6);
+}
+
+/* 海洋进度条 */
+.ocean-progress {
+    width: 100%;
+    height: 8px;
+    background: rgba(10, 42, 67, 0.5);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ocean-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--ocean-light), var(--ocean-surface));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* 海洋提示框 */
+.ocean-tooltip {
+    position: relative;
+}
+
+.ocean-tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    background: var(--ocean-deep);
+    color: var(--text-light);
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid var(--glass-border);
+}
+
+.ocean-tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 8px);
+}
+
+/* 海洋徽章 */
+.ocean-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 8px;
+    background: var(--coral-pink);
+    color: white;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* 海洋卡片组 */
+.ocean-card-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 20px;
+}
+
+/* 海洋头像 */
+.ocean-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--ocean-surface);
+    box-shadow: 0 8px 25px rgba(46, 134, 193, 0.4);
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.ocean-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(46, 134, 193, 0.6);
+}
+
+/* 海洋列表 */
+.ocean-list {
+    list-style: none;
+    padding: 0;
+}
+
+.ocean-list li {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(135, 206, 235, 0.1);
+    transition: all 0.3s ease;
+    color: var(--text-soft);
+}
+
+.ocean-list li:hover {
+    background: rgba(46, 134, 193, 0.1);
+    color: var(--text-light);
+    padding-left: 24px;
+}
+
+.ocean-list li:last-child {
+    border-bottom: none;
+}
+
+/* 海洋表格 */
+.ocean-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(10, 42, 67, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.ocean-table th {
+    background: linear-gradient(135deg, var(--ocean-light), var(--ocean-surface));
+    color: white;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.ocean-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(135, 206, 235, 0.1);
+    color: var(--text-soft);
+}
+
+.ocean-table tr:hover td {
+    background: rgba(46, 134, 193, 0.1);
+    color: var(--text-light);
+}
+
+/* 海洋模态框 */
+.ocean-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.ocean-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ocean-modal {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    padding: 32px;
+    max-width: 500px;
+    width: 90%;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+}
+
+.ocean-modal-overlay.active .ocean-modal {
+    transform: scale(1);
+}
+
+/* 海洋通知 */
+.ocean-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    color: var(--text-light);
+    box-shadow: var(--glass-shadow);
+    transform: translateX(120%);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.ocean-notification.show {
+    transform: translateX(0);
+}
+
+/* 海洋加载动画 */
+.ocean-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(135, 206, 235, 0.3);
+    border-top-color: var(--ocean-surface);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 海洋波浪装饰 */
+.ocean-wave {
+    position: relative;
+    overflow: hidden;
+}
+
+.ocean-wave::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100px;
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%2385c1e9' fill-opacity='0.3' d='M0,40L48,45C96,50,192,60,288,55C384,50,480,30,576,25C672,20,768,30,864,40C960,50,1056,60,1152,55C1248,50,1344,30,1392,20L1440,10L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z'%3E%3C/path%3E%3C/svg%3E") repeat-x;
+    animation: wave-flow 8s linear infinite;
+}
+
+/* 海洋粒子效果 */
+.ocean-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.ocean-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    animation: particle-float 10s linear infinite;
+}
+
+@keyframes particle-float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.2;
+    }
+    100% {
+        transform: translateY(-100px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* 海洋装饰线条 */
+.ocean-deco-line {
+    position: relative;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        var(--ocean-surface),
+        var(--coral-pink),
+        var(--ocean-surface),
+        transparent);
+    margin: 40px 0;
+}
+
+.ocean-deco-line::before,
+.ocean-deco-line::after {
+    content: "🐚";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.ocean-deco-line::before {
+    left: 10%;
+}
+
+.ocean-deco-line::after {
+    right: 10%;
+}
