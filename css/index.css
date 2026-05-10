@@ -15,16 +15,17 @@ body {
 		linear-gradient(225deg,
 			rgba(255, 255, 255, 0.05) 0%,
 			transparent 25%),
-		/* 海底渐变 */
+		/* 海底渐变覆盖层 */
 		linear-gradient(180deg,
-			#0a2a43 0%,
-			#0d3458 15%,
-			#1a5276 30%,
-			#1f6b8a 45%,
-			#2e86c1 60%,
-			#4a9bd9 75%,
-			#6bb3e0 90%,
-			#85c1e9 100%);
+			rgba(10, 42, 67, 0.7) 0%,
+			rgba(13, 52, 88, 0.6) 15%,
+			rgba(26, 82, 118, 0.5) 30%,
+			rgba(31, 107, 138, 0.4) 45%,
+			rgba(46, 134, 193, 0.3) 60%,
+			rgba(74, 155, 217, 0.2) 75%,
+			rgba(133, 193, 233, 0.1) 100%),
+		/* 实际海底背景图片 */
+		url('../img/underwater-bg.jpg');
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
