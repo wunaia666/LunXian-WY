@@ -1,0 +1,51 @@
+{
+  "任务标识": "20261028-201413-8048e15d",
+  "任务名称": "配置任务完成自动上传并启用失败补推",
+  "完成时间": "2026-10-28T20:14:13.440428+08:00",
+  "文件": [
+    {
+      "路径": "AGENTS.md",
+      "校验值": "a85ba303c5888caa91629ea7fd389fbbe3cb5162daf8b80f655ba884ebb025e9"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/task_sync.py",
+      "校验值": "3da9b036a76fee785bebccd79c2f4fd9973930eff65217a6abebdee65df69193"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/publish_task.py",
+      "校验值": "c864cd899ab28c134d73f768e7d62ab205ab9bac52588ebe9089aafb58fed39d"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/notify_wrapper.py",
+      "校验值": "09b1f99180d2b448305cc96a0d8f0d51f4ed3b0b60f55851fe55b2247f8a79ab"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/install_notify.py",
+      "校验值": "c6ff3519ca5e6fe6e99da79776ae5cc1c97b2aafda4bf3829c354a3722dba002"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/install_active_retry.ps1",
+      "校验值": "6a45e43af238820796b2971bf7241d2ca9b9a277ea469b14156dcee5bd96f989"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/upload_settings.json",
+      "校验值": "007325e343c71ded775fac884f59702197df309889083dca77b75acd1697f0da"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/verify_local.py",
+      "校验值": "a35cb153abee068c4abc093a9965e044f52d3e363d7a87c8667a48688971fe27"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/verify_publisher.py",
+      "校验值": "b11c1db6386fb7ad963f3e172da9da23f43ce61741d9dc67b4725da31593333b"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/验证结果.json",
+      "校验值": "1ca8a022d2459a908be3549b946d02a37111561de63c1244caf8f8104983f7d7"
+    },
+    {
+      "路径": "tools/git-task-sync-20261028/上传器验证结果.json",
+      "校验值": "92c4133ef4197f324ce734f186a8af33c15f2c79e1b9fc13bf52383a678b7d59"
+    }
+  ]
+}
