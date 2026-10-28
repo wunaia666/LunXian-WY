@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>小鲸鱼账号登录</title>
+<style>
+:root{--bg:#f5f4f0;--surface:#fff;--ink:#242927;--muted:#626b65;--line:#d9ded8;--accent:#17664f;--bad:#ab3730}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 "Microsoft YaHei",sans-serif}main{width:min(100% - 32px,580px);margin:40px auto;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:30px}h1{font-size:26px;line-height:1.4;margin:0 0 12px}p{margin:0 0 14px}.muted{color:var(--muted)}.state{padding:12px 16px;background:var(--bg);border-left:4px solid var(--accent);margin:20px 0}.qr{width:min(100%,340px);aspect-ratio:1;margin:24px auto;background:white;display:grid;place-items:center}.qr img{display:block;width:100%;height:100%;object-fit:contain;image-rendering:pixelated}.steps{padding-left:24px}a,button{font:inherit;color:var(--accent)}a{display:inline-block;padding:8px 0;min-height:44px}button{min-height:44px;padding:8px 16px;background:white;border:1px solid var(--line);border-radius:4px;cursor:pointer}a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}[hidden]{display:none!important}.error{color:var(--bad)}@media(max-width:480px){main{margin:16px auto;padding:22px}}
+</style>
+<main>
+<h1>小鲸鱼账号登录</h1>
+<p class="muted">目标账号：<strong>3768021466</strong></p>
+<div class="state" role="status" aria-live="polite" id="state">正在读取真实登录状态……</div>
+<section id="manual" hidden><p>先返回首页，点击“启动小鲸鱼聊天”。出现目标账号登录窗口后，请亲自完成扫码或验证。此页会持续核对真实连接状态。</p><p class="muted">如果提示存在其他聊天进程，请先核对当前打开的客户端；系统不会自动关闭其他账号。</p></section><section id="login">
+<p>用手机上的聊天客户端扫描下方二维码，并在手机上确认登录。</p>
+<div class="qr"><img id="qr" alt="当前账号登录二维码，扫码后请在手机确认" hidden></div>
+<p class="muted" id="note">正在读取当前二维码……</p>
+<ol class="steps"><li>打开手机上的扫一扫。</li><li>扫描此页二维码，核对登录账号。</li><li>在手机确认；此页会自动核实账号是否在线。</li></ol>
+<button id="refresh" type="button">重新读取二维码</button>
+</section>
+<p id="error" class="error" role="alert"></p>
+<a href="/">返回实时监控面板</a>
+</main>
+<script>
+const state=document.getElementById('state'),login=document.getElementById('login'),qr=document.getElementById('qr'),note=document.getElementById('note'),error=document.getElementById('error');
+let stamp='',busy=false;
+async function update(force=false){if(busy)return;busy=true;try{const response=await fetch('/api/login',{cache:'no-store'});const data=await response.json();if(!response.ok||!data.ok)throw Error('暂时无法读取登录状态');const d=data.data;state.textContent=d.qq?'账号已在线，登录成功。机器人后台'+(d.astrbot?'已运行。':'正在恢复。'):(d.qq_state||'等待登录');login.hidden=!!d.qq||d.gateway==='snowluma';document.getElementById('manual').hidden=!!d.qq||d.gateway!=='snowluma';if(!d.qq&&d.qr_available){if(force||stamp!==String(d.qr_mtime)){stamp=String(d.qr_mtime);qr.src='/login/qrcode.png?t='+encodeURIComponent(stamp);qr.hidden=false}note.textContent=d.qr_age_s<120?'二维码会自动更新，无需重启客户端。':'当前码可能已过期，正在等待客户端更新。'}else if(!d.qq){qr.hidden=true;note.textContent='客户端正在生成二维码，请稍候。'}error.textContent=''}catch(e){error.textContent=e.message+'，会自动重试。'}finally{busy=false}}
+qr.onerror=()=>{qr.hidden=true;note.textContent='二维码正在更新，请稍候。'};
+document.getElementById('refresh').onclick=()=>update(true);update();setInterval(()=>{if(!document.hidden)update()},2000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)update(true)});
+</script>
+</html>

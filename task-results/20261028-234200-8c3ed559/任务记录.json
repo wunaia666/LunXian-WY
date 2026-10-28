@@ -1,0 +1,139 @@
+{
+  "任务标识": "20261028-234200-8c3ed559",
+  "任务名称": "小鲸鱼真实电脑控制与桌面监控启动入口",
+  "完成时间": "2026-10-28T23:42:00.747977+08:00",
+  "文件": [
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/android_device.py",
+      "校验值": "779c8334464d4c568ae74cae178654b6804e481ec5e25fc56979bbc850ac448a"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/android_life.py",
+      "校验值": "756b1c539d63f3e0fab8ed0fb53c25bc111f5e8b3fba316e1709e2e2ee42812a"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/companion.py",
+      "校验值": "8b447cb16f6f287e5f8f6a5654901aacc32e1d69b3f50313aab77157d79d156c"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/main.py",
+      "校验值": "bb75ef1e8bb739b37d6c3cbd4183af00866666e2272d728d165f110968d25376"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/phone_extensions.py",
+      "校验值": "6984e9811f48911b746610fd0ed69ac8df084d77740aa23f389f29f7906b7783"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/tests/test_companion.py",
+      "校验值": "1133e02446bb97d1b2f6e1747233ae8a7b9ab52ff70f5456b15059cf9f9e82f7"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/tests/test_desktop_priority.py",
+      "校验值": "a755f768a83752989ea7a8ffbd7c83c873189a738760037ffad8634fbf5f2c6a"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/tests/test_feature_completion.py",
+      "校验值": "27e4553449bd816aae6736b2870e50e5f0e6fcf1dbb926110d927fd51eaa634a"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/local_media.py",
+      "校验值": "d8fbd5ef277b8a3712e57194dc80b71faceffd8888a814a5ab5ea107406d44ea"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/main.py",
+      "校验值": "2e59e5de9e96c45b18c1798df860dd65002e712f1fe32e928f3775ff534fdefd"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/public_profile.py",
+      "校验值": "acfb16deb45ddfa3fd8e204aa1cd390c84fdcd05ad4779ca564b7d560ab166d0"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/qzone.py",
+      "校验值": "103a7241efd008fe6846ebfe7ee4f66699b408b6ce26f5b7c5152b182d9d6839"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/stickers.py",
+      "校验值": "d05bade811181f48830584fac997adc7446e3896692213a713944074f71156c2"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_dafeiyu_voice/tts.py",
+      "校验值": "f922ab39e128c3ff61ff47392730b5f4f093e6b01c3101ae8f90fdb2a31509ea"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_xiaojingyu_host/desktop.py",
+      "校验值": "365186f6fcda915ad3382d55a7592f7285b907674125235d20ea78c13139c5b1"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_xiaojingyu_host/desktop_note.py",
+      "校验值": "0eaa92cf2e79122add2f631900a6be3afc5d5a294f64bf57a2dd79bb927d73d7"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/AstrBot/data/plugins/astrbot_plugin_xiaojingyu_host/main.py",
+      "校验值": "fbd746b24093f6589577781508d21a0401734f4eccbdf9295005dc8f1f46fc69"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/dashboard.html",
+      "校验值": "077cbd0ec7bb791e5fb96b27aa15c381688121002fa5b29efc9651d7f3acd436"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/features.json",
+      "校验值": "ed0d1d71592c3584e0a067432f38126f17bd2b23abfd59492f506acba9d1c22e"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/login.html",
+      "校验值": "91b5375fdc122b9fd91feff8b702e2f2b62553b1d9dbee7ffc45c63ed01e6eec"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/monitor.py",
+      "校验值": "f3725240d4f7dce5a3159a78a9052c12dd0126ad18a580d3e8ec29b1ffe9d23d"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/test_chat_start.py",
+      "校验值": "44884e07b0a687110aa7d95e67a0b856f8f4ab03a5fde4101ad297f414e2e318"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/test_monitor.py",
+      "校验值": "988e400ddbaec0fb720486653149f83f95bdec008104b4b24b606ff2cfafbb36"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/voice_candidates.json",
+      "校验值": "908fe31b639e566e41d7fc5a86640bcf36015146f204d7e356566c1ce20c961e"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/启动入口源码.json",
+      "校验值": "d77e35800dd89b1f317b2c059496e4ff58002fe19b6b808af3a4d9b0db788379"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/monitor/桌面入口.html",
+      "校验值": "ed5976ed891c89ea1ffa44539c489d624fee913963eeee041f781ef92ee2f2f9"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/tools/gui-control.ps1",
+      "校验值": "3affe6f83099fffcfe4a1bb67df1f7d770568f57592fd6f75cf76b33284825f7"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/tools/local_image_worker.py",
+      "校验值": "928f8cea5808479cf2ad06ce9e0a772546fc6d11c88ff1cf0d27ee9ab215cc86"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/tools/local_media_server.py",
+      "校验值": "7e92a43f72642a5b26ec7a7180258f8b77216ecc3008b390068e83ddeacc3cef"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/tools/qq_gateway_runtime.py",
+      "校验值": "b27031bb95adb8dd5d33f2f0c5b11a0abc5fb8920eff175c110a402968c5500c"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/tools/xiaojingyu_chat_control.py",
+      "校验值": "ff5493eb22f4cbd321497d50a41d08ec9c05cfd9cfcac04d30334db6a2dcdb7d"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/tools/xiaojingyu_note_window.py",
+      "校验值": "5b7232da35015c93d373a44132fa74aa19f2e14493a1372d99ab397e5348bb26"
+    },
+    {
+      "路径": "小鲸鱼功能补齐_20261027/交付状态.json",
+      "校验值": "ef99e186b7b6c1cb320be6177a264c93f8c39889c25507eed33dd96fe3a8a031"
+    }
+  ]
+}
