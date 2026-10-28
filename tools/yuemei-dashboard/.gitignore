@@ -4,3 +4,7 @@ __pycache__/
 *.xlsx
 *.pdf
 *.png
+!美化素材/*.png
+美化素材/护理静物.png
+美化素材/护理空间.png
+美化素材/_ai小图/
