@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+检查结果/
+*.xlsx
+*.pdf
+*.png
