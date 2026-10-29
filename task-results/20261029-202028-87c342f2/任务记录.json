@@ -1,0 +1,71 @@
+{
+  "任务标识": "20261029-202028-87c342f2",
+  "任务名称": "小鲸鱼控制台登录与记忆原声工作台升级",
+  "完成时间": "2026-10-29T20:20:28.300247+08:00",
+  "文件": [
+    {
+      "路径": "小鲸鱼控制台升级_20261029/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/main.py",
+      "校验值": "0faba00e082d6e5fb2a4a9d2a53b3f291ef0d2670ef673619b61c7c725db9825"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/memory.py",
+      "校验值": "580789172f80a67100c987e0744837697d0aa3d41c1306c511575be13db60e8d"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/memory_pipeline.py",
+      "校验值": "1280f22232c4073f53ebb27b24ecf9bc4507abcdbf32acde9262e9fc52f7744c"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/AstrBot/data/plugins/astrbot_plugin_dafeiyu_voice/main.py",
+      "校验值": "72d3f87101760a727ae94498a405322823fb0bad6fecf9d5f1447edf08610678"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/AstrBot/data/plugins/astrbot_plugin_dafeiyu_voice/tts.py",
+      "校验值": "6b4b63e37b421f0b4354431c040ecbf3c59c373df8bb1625b6451256ed4a49f3"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/AstrBot/data/plugins/astrbot_plugin_dafeiyu_browser/tests/test_memory_archive.py",
+      "校验值": "82dc3a6bdd1964a73e7c4a7a92314a12b6e97fbd43a3f926f63185c88a46df7e"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/tools/xiaojingyu_chat_control.py",
+      "校验值": "73a062bd48bc3b0393f80dfdbc7d4d03e91e32f4a260bbaaa807fc761b191fb2"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/tools/xiaojingyu_checks.py",
+      "校验值": "e496a211ff5fbf0c37bc815a10c37749d1d959d7927fee7674ad3a33447c239e"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/tools/xiaojingyu_voice_studio.py",
+      "校验值": "f7df6fe4fcb86143ecc1a72a35ce2a79f4ce6226e0cbea583496667eebdc78af"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/monitor/monitor.py",
+      "校验值": "1a2a67156bfe0c7fcf22b7793827e18ae7ba2b48c83d8b1408daf251bfcf5378"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/monitor/dashboard.html",
+      "校验值": "75c5545a1279a8cad7e98d2d60db5c3462bfc431ab8c9a6eb9c42afadd8bee3a"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/monitor/voice_candidates.json",
+      "校验值": "8aeb0005396493a40009490f8e8e98ae2819fc4595b381b508202b5341e3fd35"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/monitor/features.json",
+      "校验值": "90026d2fdba7cb26e8bfa166937cd14b96158908694516e2f0a2795e96e2af6c"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/monitor/test_chat_start.py",
+      "校验值": "ad767f31a886b2e54d54b6a6eeb48d90063f9ca687471c71ee7a83300ff6677c"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/monitor/test_console_upgrade.py",
+      "校验值": "320d5212cf2d4a8d5229a626359a7a87940088fcd848962ad28075142c20d3e6"
+    },
+    {
+      "路径": "小鲸鱼控制台升级_20261029/交付状态.json",
+      "校验值": "6cb52ec43580cbbee7a98c589de097f05b7dc566eded8e029fe4dc77bbf266ea"
+    }
+  ]
+}
