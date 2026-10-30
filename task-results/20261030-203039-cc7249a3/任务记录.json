@@ -1,0 +1,39 @@
+{
+  "任务标识": "20261030-203039-cc7249a3",
+  "任务名称": "小鲸鱼语音：三代引擎加音高校准，日常链路改为对齐参考音",
+  "完成时间": "2026-10-30T20:30:39.151842+08:00",
+  "文件": [
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/AstrBot/data/plugins/astrbot_plugin_dafeiyu_voice/tts.py",
+      "校验值": "ef40aa3aadd2c84e1213fb7db03e2ef441c652c7499c345a224715ccce681fb5"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/cosy_server3.py",
+      "校验值": "b3258f45dca714bb90c66acf6ee7e8fbefc265588412d096ab3a872ea1c02817"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/cosy_supervisor.sh",
+      "校验值": "d881e075736058def09f40260ed15bc3898be9b7b0f53737d2a5005a6de0a9af"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/cosy_wsl.sh",
+      "校验值": "604b745aec1101a3866c7fc21a2560743c6db1e35309686aef1bed65f12efd8e"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/xiaojingyu_voice_studio.py",
+      "校验值": "ab8e424a55bc23896dff41847e091e7a931836fb2fe3f950892bce4416c5d802"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/build_voice_audition_page.py",
+      "校验值": "de960a21751778590dd0f1b1fea82f467acc2a4c7ce5f52ec089a17b16ab5fae"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/dafeiyu_assets/voice_config.json",
+      "校验值": "d2fe7895937ea4e0aeca63b0a41e10920bd9bf545931f4fd4be882a87ec9d15f"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/小鲸鱼语音纠偏_20261030.md",
+      "校验值": "2a5f9a0dc45299b4ec611e4d9ff3a943bbbc09d627dfb757926cc1f7e27c1e3f"
+    }
+  ]
+}

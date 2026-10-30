@@ -1,0 +1,31 @@
+{
+  "_说明": "小鲸鱼仅使用指定视频原声；本地合成失败时报告失败，不自动切换其他音色。",
+  "reference_only": true,
+  "backend": "cosy",
+  "cosy_url": "http://127.0.0.1:9880",
+  "cosy_timeout_sec": 150,
+  "cosy_health_cache_sec": 60,
+  "cosy_air_db": 0,
+  "fallback": "none",
+  "_模型": {
+    "model_dir_wsl": "/home/lun-xian/models/Fun-CosyVoice3-0.5B-2512",
+    "repo_wsl": "/home/lun-xian/CosyVoice",
+    "ref_wav_wsl": "/mnt/e/sss_test/dafeiyu_assets/audio/_cosy_ref/ref_douyin_link_7689724715246372473.wav",
+    "ref_text": "在吗？",
+    "_换参考音": "POST http://127.0.0.1:9880/admin/reload {\"wav\":\"<wsl路径>\",\"text\":\"<文本>\"}，不用重启服务",
+    "_高频补偿": "cosy_air_db=0 完全照搬参考音；参考音偏闷时可设 3~6 补回 3.2kHz 以上",
+    "source_url": "https://v.douyin.com/eXcBMsVP5cE/",
+    "source_video_id": "7689724715246372473",
+    "reference_note": "仅使用用户指定链接中的原始音轨；参考文本依据字幕，短素材的克隆稳定性需试听确认。",
+    "engine": "cosyvoice3",
+    "_引擎说明": "engine=cosyvoice2 走二代服务，engine=cosyvoice3 走三代服务；改完执行 cosy_wsl.sh stop 再 start 生效。",
+    "_二代模型": "/home/lun-xian/models/CosyVoice2-0.5B"
+  },
+  "edge_voice": "zh-CN-XiaoxuanNeural",
+  "edge_rate_percent": -6,
+  "edge_pitch_hz": 0,
+  "voice_style": "用户指定的‘在吗’视频女生原声，保留原始音色",
+  "cosy_pitch_match": true,
+  "cosy_target_f0": 480,
+  "_音高校准": "cosy_pitch_match=true 时，每句合成后把基频对齐到 cosy_target_f0（参考音中位数），只动整体音高、保留句内起伏。"
+}
