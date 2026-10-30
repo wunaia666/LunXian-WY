@@ -1,0 +1,35 @@
+{
+  "任务标识": "20261030-192737-836d590c",
+  "任务名称": "小鲸鱼语音纠偏：接入三代模型并做音高诊断",
+  "完成时间": "2026-10-30T19:27:37.960282+08:00",
+  "文件": [
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/cosy_server3.py",
+      "校验值": "b3258f45dca714bb90c66acf6ee7e8fbefc265588412d096ab3a872ea1c02817"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/cosy_supervisor.sh",
+      "校验值": "d881e075736058def09f40260ed15bc3898be9b7b0f53737d2a5005a6de0a9af"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/cosy_wsl.sh",
+      "校验值": "604b745aec1101a3866c7fc21a2560743c6db1e35309686aef1bed65f12efd8e"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/xiaojingyu_voice_studio.py",
+      "校验值": "ab8e424a55bc23896dff41847e091e7a931836fb2fe3f950892bce4416c5d802"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/tools/build_voice_audition_page.py",
+      "校验值": "de960a21751778590dd0f1b1fea82f467acc2a4c7ce5f52ec089a17b16ab5fae"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/dafeiyu_assets/voice_config.json",
+      "校验值": "47e2fd5fdb784bcc58dc518c80ddbe346a7baeaee08deff44731ebf1f5284906"
+    },
+    {
+      "路径": "小鲸鱼语音纠偏_20261029/小鲸鱼语音纠偏_20261030.md",
+      "校验值": "0ff460bacf199f6c93912231d581fb21149e1c1f400fa8b2fb3ebad66e4c95f6"
+    }
+  ]
+}
