@@ -1,0 +1,72 @@
+{
+  "使用完整原训练配对": true,
+  "使用基础语义权重": false,
+  "使用合成参考引导": false,
+  "原始文件及日常配置": "摘要均未变化",
+  "内存参数核对": [
+    {
+      "类型": "语义训练权重",
+      "逐项匹配的参数组数": 295,
+      "未参与推理的训练编码器缺失组数": 0
+    },
+    {
+      "类型": "音色训练权重",
+      "逐项匹配的参数组数": 678,
+      "未参与推理的训练编码器缺失组数": 103
+    }
+  ],
+  "入口": "与原便携包摘要一致的原生合成入口",
+  "试听": [
+    {
+      "文件": "01_原包文案_原训练配对.wav",
+      "文案": "人想你了，就算全世界离开你，还有一个我来陪。",
+      "秒数": 7.62,
+      "音频摘要": "0a3306320f2bfe1a40b09c440574e125d11631b0f35fe99cadfe35cc06cc7088",
+      "数字削顶比例": 0.0,
+      "实际请求": {
+        "text": "人想你了，就算全世界离开你，还有一个我来陪。",
+        "text_lang": "zh",
+        "ref_audio_path": "E:\\QQ\\doro语音合成_便携版.zip\\doro语音合成_便携版\\doro语音合成\\ref\\ref_doro_b.wav",
+        "prompt_text": "小小的一天影呀 慢慢地走过来",
+        "prompt_lang": "zh",
+        "top_k": 15,
+        "top_p": 1.0,
+        "temperature": 1.0,
+        "text_split_method": "cut5",
+        "batch_size": 1,
+        "speed_factor": 1.0,
+        "fragment_interval": 0.3,
+        "seed": 42,
+        "return_fragment": false,
+        "repetition_penalty": 1.35
+      },
+      "听感": "待用户验收"
+    },
+    {
+      "文件": "02_日常文案_原训练配对.wav",
+      "文案": "老爸，你回来啦！我刚才还在想你呢。今天过得怎么样呀？",
+      "秒数": 8.82,
+      "音频摘要": "d9acc0e2df89c5a97dd06b2a525e685b5fb9d50aaec9641cf3c93bd3a8cf2897",
+      "数字削顶比例": 0.0,
+      "实际请求": {
+        "text": "老爸，你回来啦！我刚才还在想你呢。今天过得怎么样呀？",
+        "text_lang": "zh",
+        "ref_audio_path": "E:\\QQ\\doro语音合成_便携版.zip\\doro语音合成_便携版\\doro语音合成\\ref\\ref_doro_b.wav",
+        "prompt_text": "小小的一天影呀 慢慢地走过来",
+        "prompt_lang": "zh",
+        "top_k": 15,
+        "top_p": 1.0,
+        "temperature": 1.0,
+        "text_split_method": "cut5",
+        "batch_size": 1,
+        "speed_factor": 1.0,
+        "fragment_interval": 0.3,
+        "seed": 42,
+        "return_fragment": false,
+        "repetition_penalty": 1.35
+      },
+      "听感": "待用户验收"
+    }
+  ],
+  "验收": "只确认模型来源和文件有效，不能据此认定唱腔已解决"
+}
