@@ -1,0 +1,24 @@
+{
+  "实际合成文件": "E:\\sss\\小鲸鱼多萝定稿接入_20261101\\实际合成验证\\fish_20261101_215656_gptsovits_approved_2ac7e500ea.wav",
+  "实际引擎": "gptsovits",
+  "实际元数据": {
+    "backend_actual": "gptsovits",
+    "voice_id": "doro-birthday-20261101-approved10",
+    "mood": "normal",
+    "synth_ms": 11469,
+    "chunks": 1,
+    "ref": "doro_birthday_ref.wav",
+    "fallback": "",
+    "fallback_reason": "",
+    "profile_id": "doro-birthday-20261101-approved10",
+    "reference_sha": "80fa21878b8b012950429c73007a81dd33dbb8a2d6eb506c9aa8cfc909ce5a04",
+    "accepted_sample_sha": "20c311aec5c0a2649b7b88574d1afda52829c53c3fe2d6a7e149bdc8765dc074",
+    "emotion_control_applied": false
+  },
+  "参数和采样点数一致": true,
+  "波形逐字节一致": true,
+  "实际文件摘要": "20c311aec5c0a2649b7b88574d1afda52829c53c3fe2d6a7e149bdc8765dc074",
+  "用户已验收样本摘要": "20c311aec5c0a2649b7b88574d1afda52829c53c3fe2d6a7e149bdc8765dc074",
+  "实际秒数": 9.94,
+  "实际发送聊天消息": false
+}

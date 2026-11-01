@@ -1,0 +1,27 @@
+{
+  "message": "日常合成已选用第十条声音的模型与参数；下方可继续试听新文字。",
+  "controls": [
+    {
+      "id": "voice-profile",
+      "disabled": true,
+      "value": "expressive"
+    },
+    {
+      "id": "voice-mood",
+      "disabled": true,
+      "value": "normal"
+    },
+    {
+      "id": "voice-tempo",
+      "disabled": true,
+      "value": "1.0"
+    }
+  ],
+  "note": "当前使用你认可的第十条声音。保持原训练配对、原速与自然语气；其他情绪和速度尚未验收。",
+  "声音名称": "已确认的声音 · 第十条试听",
+  "已选音频摘要": "20c311aec5c0a2649b7b88574d1afda52829c53c3fe2d6a7e149bdc8765dc074",
+  "已选音频可播放": true,
+  "已确认状态": "accepted",
+  "日常配置已生效": true,
+  "自动写入请求数": 0
+}

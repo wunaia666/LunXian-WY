@@ -1,0 +1,91 @@
+{
+  "任务标识": "20261101-220709-951ced81",
+  "任务名称": "采用用户确认的第十条多萝声音并接入日常语音与监控",
+  "完成时间": "2026-11-01T22:07:09.178007+08:00",
+  "文件": [
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/project/tools/xiaojingyu_voice_profile.py",
+      "校验值": "4cb6c9483a3d4733298a88f5f2e7f905fc05c5958549f4418b5b36ec2e43d616"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/project/tools/xiaojingyu_gptsovits_server.py",
+      "校验值": "c70cd6b6db1397db1982d28837dc4fb0447eac90c8c52daef2a7f2237b104e75"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/project/tools/xiaojingyu_gptsovits_runtime.py",
+      "校验值": "bf81c5b214fddb40d3a5335e9c2e81207a99244e8a1b7cfe2a56a1f9cf9c7bb0"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/project/tools/xiaojingyu_voice_studio.py",
+      "校验值": "3e28be2664675276ed2ecdcbd5231a562d9eba2108dda530283f118f9a1eab5f"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/project/tools/xiaojingyu_checks.py",
+      "校验值": "9aa71922b14b610977bb0c164ecfed709cd2022c0582a95728dddafd33a98533"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/project/tools/cosy_wsl.sh",
+      "校验值": "35d8b8ce45388b48e94364473087862f01e4a3fcebc3363a0d6a484cb05c664a"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/project/tools/xiaojingyu_admin_runtime.py",
+      "校验值": "fcfe5bd0cded9bd9cc29e11a2b6a46535ebaee2d222d5334a15a51000a9baaa5"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/project/AstrBot/data/plugins/astrbot_plugin_dafeiyu_voice/tts.py",
+      "校验值": "c3fe9d4eaf9e3a52a922d10ba12c028fe237071c8e25002c59165a263735fbe9"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/monitor/monitor.py",
+      "校验值": "9bd89c7bb9bc0136138b897bc7073d0ceaaaac7a2aa5e6db5d1aa7a98cac023c"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/monitor/dashboard.html",
+      "校验值": "527ce2a872019ebf513fc4cc979494645d4b787cca074f6321c5faee68aeecce"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/安装已选声音.py",
+      "校验值": "8b24271645d3963fac153c87259fc822891f5c6899807820fc434a815cf1763f"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/test_approved_voice.py",
+      "校验值": "efb80ad90a30d75ae1d194e53dbbab02a0635e89c776a75e59b610fe93d06d0f"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/更新界面状态.py",
+      "校验值": "0b976d495529e046504d9d840482cc17274359b0f79adf4871d28624ec7544e8"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/验证实际合成.py",
+      "校验值": "60782020a050916792f3638aee82dbd11403d3125327a5ed48d15865e321243c"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/保存选声结果.py",
+      "校验值": "66c7496dfae1fd7572eb91714f1bb9ec4b8144aca5150df25af4ebbf00439318"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/验证监控界面.py",
+      "校验值": "950a4e7c1acd5406e510c4c0733f5f85799312f02cb39c175b325582e33e22bb"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/完成接续记录.py",
+      "校验值": "5910d021451a51398d9d2655b520d2cb9601beb6c050122314f95070bf44c2ff"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/接续结果.json",
+      "校验值": "482ee44814c070d3a36137eb7094e0c7573be34f26e74cce2980fc4de06a7e25"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/实际合成验证结果.json",
+      "校验值": "74e0da41bc4d961475df1569b67f813fac6ad00a9fb6db998650aec566de8391"
+    },
+    {
+      "路径": "小鲸鱼多萝定稿接入_20261101/监控界面验证结果.json",
+      "校验值": "be0cf156d30722e9593ef91e9f6a3a260f2c26a6bf4f3df2120cac2c2f4ea89f"
+    },
+    {
+      "路径": "多萝原视频重做_20261101/接续断点.json",
+      "校验值": "f3e9314eebfa19289b3ee676d2c46b42d6f4322004635cb8f179f418fc0ce214"
+    }
+  ]
+}
