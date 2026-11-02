@@ -1,0 +1,71 @@
+{
+  "任务标识": "20261102-104055-915b15f1",
+  "任务名称": "记忆星图接入现有监控并落实偶尔语音策略",
+  "完成时间": "2026-11-02T10:40:55.312357+08:00",
+  "文件": [
+    {
+      "路径": "小鲸鱼记忆星图_20261101/project/tools/xiaojingyu_memory_map.py",
+      "校验值": "a3f131877b8ed878f067128b91ec0f20c8a65cd62f44f0c59abfdcf75fc88bea"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/project/tools/xiaojingyu_speech_policy.py",
+      "校验值": "d9c9f0adc22a6b24c5127ef082c47f3a64d04eb1db22c47c3e40ebc42af37705"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/project/AstrBot/data/plugins/astrbot_plugin_dafeiyu_voice/main.py",
+      "校验值": "6ae176c9a461f67bf9146747f921575e6c1eb1512ce1c206e462195ce52f2ab7"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/project/AstrBot/data/plugins/astrbot_plugin_dafeiyu_selfmod/main.py",
+      "校验值": "8c9746f03a3d81380c3088ab11c4f19bdb8033064ea26b378015650a1d183cfb"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/monitor/monitor.py",
+      "校验值": "91aeea00531703a0cd64cb9db5d601793a427b4ed46137750603fd951cb6112d"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/monitor/dashboard.html",
+      "校验值": "42260eed364bc5374469f7e9a999da3d6556e23c47172d319c1c63e42527726d"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/monitor/memory-map.js",
+      "校验值": "0dc8154c0322eabe630aaf9049e4c30b4d132b2f85b4977b525ef5c31b4b016e"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/monitor/memory-map.css",
+      "校验值": "8c8fcbf0e85a3691761f6b0180f5c13fa8123c2edeb0d9c191f0aa116cd9223d"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/更新星图页面.py",
+      "校验值": "f7a1f266e7da2e83c0ffaa1822cea42dca2a22b25e84589dfff7ce507882d2e1"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/test_memory_map.py",
+      "校验值": "17f4a62363a7595829f07214ef6e66223b9cc7cff676ede897a91f488d5dbbc0"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/安装记忆星图.py",
+      "校验值": "5ebd1604e4f7105bc00a7b72323dec651e2a54132f438738417b6bba34d5d269"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/验证星图界面.py",
+      "校验值": "278c1f246cdbb2788b9e65b6bdd641f439ae8940fef2a4c6759e3bd8d7774cc7"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/核对记忆接续.py",
+      "校验值": "ddbbf40efc298e6a5b7a9b0c0bc58fb32cf5dd462bb0c618a1929a8350adf393"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/更正早期声音记忆.py",
+      "校验值": "9b40272b3ffb38885971e62cc59dfb4e38694a54c30d5375bdc702fa6c42700e"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/接续结果.json",
+      "校验值": "25790b0f3d031bb15f99ccb3b5a12018c20202f44dfd27a43f8c6e8f0ee6bc9a"
+    },
+    {
+      "路径": "小鲸鱼记忆星图_20261101/星图界面验证结果.json",
+      "校验值": "104aaa15e9125d1938d7f9c7794ae5e709f0a082d4b30f3717ae6320c658f2e7"
+    }
+  ]
+}
