@@ -1,0 +1,10 @@
+/* 核对星团不会捏造记忆，且每条关联都具有可追溯的归组依据。 */
+const test=require('node:test'),assert=require('node:assert/strict');
+const {buildWhaleConstellation:build}=require('./monitor/memory-map.js');
+const memory=(id,content,extra={})=>({id:'memory:'+id,memory_id:id,type:'memory',kind:'preference',content,topic:'',source:'用户对话',label:content,...extra});
+test('空输入不生成虚构记忆或星团',()=>{const result=build({nodes:[],total:0});assert.equal(result.nodes.length,0);assert.equal(result.links.length,0)});
+test('关键词关联能从正文或主题核对',()=>{const source=[memory('甲','语音要保持原声的声音'),memory('乙','这个模型帮助研究数学')];const result=build({nodes:source,total:2});for(const edge of result.links){const target=source.find(n=>n.id===edge.target);for(const word of edge.evidence)assert.ok((target.content+target.topic).includes(word))}});
+test('原始来源文本不会冒充正文关键词',()=>{const result=build({nodes:[memory('甲','喜欢安静',{source:'语音声音多萝'})],total:1});assert.equal(result.clusters[0].label,'偏好与约定');assert.equal(result.links[0].relation,'所属分类')});
+test('相同主题可以汇聚且保留逐条记忆',()=>{const nodes=[memory('甲','第一条内容',{topic:'饮食习惯'}),memory('乙','第二条内容',{topic:'饮食习惯'})];const result=build({nodes,total:2});assert.ok(result.clusters.some(g=>g.label==='饮食习惯'&&g.count===2));assert.equal(result.nodes.filter(n=>n.type==='memory').length,2)});
+test('多个关键词关系不重复制造记忆节点',()=>{const nodes=[memory('甲','电脑软件负责语音和声音'),memory('乙','语音服务保留原声')];const result=build({nodes,total:2});assert.equal(result.shown,2);const ids=new Set(result.nodes.map(n=>n.id));for(const edge of result.links){assert.ok(ids.has(edge.source));assert.ok(ids.has(edge.target))}assert.equal(new Set(result.links.map(e=>e.source+'|'+e.target)).size,result.links.length)});
+test('只读投影不修改输入，保留期限锁定和省略数量',()=>{const input={nodes:[memory('甲','记住这个',{pinned:true,expires:123})],total:100,omitted:99},before=JSON.stringify(input);const result=build(input);assert.equal(JSON.stringify(input),before);assert.equal(result.omitted,99);assert.equal(result.nodes.find(n=>n.type==='memory').expires,123);assert.equal(result.nodes.find(n=>n.type==='memory').pinned,true)});
