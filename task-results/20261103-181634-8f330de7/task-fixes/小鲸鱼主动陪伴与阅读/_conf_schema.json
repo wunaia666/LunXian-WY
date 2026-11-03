@@ -1,0 +1,72 @@
+{
+  "autonomous_enabled": {
+    "description": "自主浏览并在值得分享时主动找主人",
+    "type": "bool",
+    "default": true
+  },
+  "autonomous_daily_shares": {
+    "description": "每天最多主动分享次数",
+    "type": "int",
+    "default": 2
+  },
+  "autonomous_cooldown_hours": {
+    "description": "两次主动分享最少间隔小时",
+    "type": "int",
+    "default": 4
+  },
+  "autonomous_idle_minutes": {
+    "description": "主人停止聊天多少分钟后才可主动分享",
+    "type": "int",
+    "default": 30
+  },
+  "autonomous_deep_read": {
+    "description": "选中视频后尝试复用视频工具取得文字证据",
+    "type": "bool",
+    "default": true
+  },
+  "bilibili_sessdata": {
+    "description": "B站登录 Cookie 的 SESSDATA（只有读视频字幕时才需要，可留空）",
+    "type": "string",
+    "default": ""
+  },
+  "bilibili_daily_limit": {
+    "description": "B站接口每天最多调用多少次，零表示不设每日上限",
+    "type": "int",
+    "default": 40
+  },
+  "max_items_per_call": {
+    "description": "单次列表最多返回几条",
+    "type": "int",
+    "default": 8
+  },
+  "comment_count": {
+    "description": "看视频时读多少条热评",
+    "type": "int",
+    "default": 10
+  },
+  "floor_count": {
+    "description": "读贴吧帖子时读多少层楼",
+    "type": "int",
+    "default": 12
+  },
+  "explore_rounds_per_day": {
+    "description": "自主探索每天最多几轮，零表示不设每日上限",
+    "type": "int",
+    "default": 3
+  },
+  "explore_items_per_day": {
+    "description": "自主探索每天最多看多少条内容，零表示不设每日上限",
+    "type": "int",
+    "default": 10
+  },
+  "initiative_enabled": {
+    "description": "主动陪伴：由小鲸鱼判断是否私聊主人，遵守暂停与夜间安静",
+    "type": "bool",
+    "default": true
+  },
+  "novel_background_enabled": {
+    "description": "自动挑选并续读番茄官方小说，记录真实读后感",
+    "type": "bool",
+    "default": true
+  }
+}

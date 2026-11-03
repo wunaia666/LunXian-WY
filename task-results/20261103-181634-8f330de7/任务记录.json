@@ -1,0 +1,47 @@
+{
+  "任务标识": "20261103-181634-8f330de7",
+  "任务名称": "新增小鲸鱼自主陪伴及番茄小说阅读书签",
+  "完成时间": "2026-11-03T18:16:34.043733+08:00",
+  "文件": [
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/main.py",
+      "校验值": "d4144a17f630ba36b98a496afeac6dd05e9f3e4e165db98bd370cb4c462581a9"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/_conf_schema.json",
+      "校验值": "1b03d302ef71c828f3528029035a8d0a9ffb2577d2757f4166c8a08daebcf0aa"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/companion_model.py",
+      "校验值": "f3b98e3d581668a5786a78cf919ae988074a1b24ad290cd46765e5f26d53a248"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/novel_ocr.py",
+      "校验值": "767c4e59fde5cf30483aadae1fd4a21210e0ca3b4b2f7c6442ce2c9dca680448"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/fanqie.py",
+      "校验值": "a66c8ceed24b75e5a0da9a84251b36425dd576f7610f44c43e9f9b65baa85318"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/initiative.py",
+      "校验值": "eed9d31ada0daac6a5a9e942cd4104d55442f9a9ccb684d48bb50e089356a43a"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/features.json",
+      "校验值": "b446093fabaa01932d750f193b06bd33b6620ee7bdba3fcc76cf88dd0b0be137"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/tests/test_reading_initiative.py",
+      "校验值": "a4ca68f0d8680a8c67691bec2836c4fd6b42bbf5ad2d164a81f1de59b2f53093"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/应用主动与阅读.py",
+      "校验值": "b6c9d09e0643d73dc2593f65d679ff099b9ab3638509cbcb134f58cf9736f1f5"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼主动陪伴与阅读/验证主动私聊.py",
+      "校验值": "87883857c6e6f7a15bde0f31bd3d7a69b1a152f6d108f7889f62d1640362ad53"
+    }
+  ]
+}
