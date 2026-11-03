@@ -1,0 +1,27 @@
+{
+  "任务标识": "20261103-172739-dd5811a2",
+  "任务名称": "恢复小鲸鱼实际聊天连接并修复手动启动入口",
+  "完成时间": "2026-11-03T17:27:39.439530+08:00",
+  "文件": [
+    {
+      "路径": "task-fixes/小鲸鱼实际连接/xiaojingyu_chat_control.py",
+      "校验值": "1e93e1958f146bf28b2ad6fa7ef41b9532f4ea87e9fac1ed202201f6feb3e07b"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼实际连接/xiaojingyu_guard.py",
+      "校验值": "c9e606467cd0f1f5651d014bd5a744cad98d176c040827bc200285339fba51df"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼实际连接/dashboard.html",
+      "校验值": "31fa3af03ad3efa7f9b65f2897098c6b2f0e6a7d259925a89b05ff7830a1e363"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼实际连接/test_manual_connection.py",
+      "校验值": "04f2210de3ccb38f326f2dad74117cef830ca09c9ad6470e8fc0618753c9a7ea"
+    },
+    {
+      "路径": "task-fixes/小鲸鱼实际连接/应用连接修复.py",
+      "校验值": "84a867b07ff4270cbea36f6b9cdb963852a586205a84483645b1b653160d9297"
+    }
+  ]
+}
