@@ -1,0 +1,19 @@
+{
+  "任务标识": "20261104-154158-cae26450",
+  "任务名称": "村志人物关系核对与双稿对照工具",
+  "完成时间": "2026-11-04T15:41:58.062591+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/review_genealogy.py",
+      "校验值": "d7730072a58171806f99c95d9b03ec6f6751d6497fa3f4e46faf419e6a36b22b"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/export_review.py",
+      "校验值": "df688cd39936f09d91eb71c6a73145019d4be0ef5792b384b0b4723930c247e2"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "12b4c048b9f0856cac1597e6bd99222dfb3fd07eee6728fda0cfe530ed78efe1"
+    }
+  ]
+}
