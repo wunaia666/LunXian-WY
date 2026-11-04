@@ -1,0 +1,23 @@
+{
+  "任务标识": "20261104-164808-a5512f1e",
+  "任务名称": "族谱严格关系核对台账与人工答复追踪",
+  "完成时间": "2026-11-04T16:48:08.678920+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/review_genealogy.py",
+      "校验值": "44b3257e2796af7fc492d67c8f39e8cc38724d8e0fba3e7cf70db2f8ee1be998"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/export_review.py",
+      "校验值": "7c35298efc027864c260029dc77d51fbc84af8e6ddcd7bbeaa3315c95ecd4fef"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/strict_review.py",
+      "校验值": "e478d729458e68db91a1abc9857ffd1bd153e361b5a495cbcca4d5cd062ffed4"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "1ff84357f2dc1a6ea66eda9a26d22db98cd63a4d606892671bd8d5441ce7efe8"
+    }
+  ]
+}
