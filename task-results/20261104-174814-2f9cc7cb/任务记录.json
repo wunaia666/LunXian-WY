@@ -1,0 +1,23 @@
+{
+  "任务标识": "20261104-174814-2f9cc7cb",
+  "任务名称": "村志分户系谱图原生编辑与矢量分页打印",
+  "完成时间": "2026-11-04T17:48:14.342152+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/build_genealogy_charts.py",
+      "校验值": "a800ac67d2e688ec2203cb64f27fbb47ce42594d469b7cab30e1730a7d2a491e"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/render_genealogy.js",
+      "校验值": "ddf893708f4a81c3fa72e3c482c0239ddfea9c77b07724a429f8e1747e9c35c2"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/export_genealogy_pdf.py",
+      "校验值": "3d3d9779111b71f81220551d8b7c1180bc1791cdd33e451f5384de276146fd2b"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "279cd12b366e57cc18690d0a11c26f3946988266e272bbc053325d7e7374608a"
+    }
+  ]
+}
