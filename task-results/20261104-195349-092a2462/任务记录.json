@@ -1,0 +1,19 @@
+{
+  "任务标识": "20261104-195349-092a2462",
+  "任务名称": "系谱图改为每人一个多段文本框并隐藏图中核对编号",
+  "完成时间": "2026-11-04T19:53:49.669364+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/export_genealogy_word.py",
+      "校验值": "a0f0389edfe42f01212a7f681963ff9fc33ab20c656750cb02e897de19d31ebd"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/build_standalone_genealogy.py",
+      "校验值": "32f89c92a5e24ef7a0bbe38346ac2543ad77d7d6c73af4ec97a675d6dc48aded"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "08f71abf2beebe1742971752fec42da683f779679cda84066f757b271e1040dd"
+    }
+  ]
+}
