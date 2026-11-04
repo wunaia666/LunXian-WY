@@ -1,0 +1,456 @@
+"""按单份材料与本地核对配置生成独立的可编辑系谱图册。"""
+
+from __future__ import annotations
+
+import argparse
+import copy
+import json
+import re
+from collections import defaultdict
+from pathlib import Path
+
+from docx import Document
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.shared import Inches, Pt
+
+from build_genealogy_charts import chunks, line_atom, text_atom
+from export_genealogy_word import write_document
+
+
+W, H = 1190.55, 841.89
+LEFT, RIGHT, TOP, FLOOR = 94, 42, 125, 746
+CELL, STEP = 82, 92
+
+
+def chinese_number(value):
+    value = int(value)
+    digits = "零一二三四五六七八九"
+    if value < 10:
+        return digits[value]
+    if value < 100:
+        return (digits[value//10] if value >= 20 else "") + "十" + (digits[value%10] if value%10 else "")
+    return str(value)
+
+
+def generation_terms(text):
+    text = re.sub(r"第([一二三四五六七八九十百零\d]+)世", r"第\1代", text)
+    return re.sub(r"第(\d+)代", lambda m: "第"+chinese_number(m.group(1))+"代", text)
+
+
+def load_model(data, plan, registry):
+    families = copy.deepcopy([f for f in data["families"] if f["source"] == plan["source"]])
+    records = {p["id"]: p for f in families for key in ["people", "spouses"] for p in f[key]}
+    initial = set(records)
+    for item in plan.get("additions", []):
+        assert item["id"] not in records
+        item = copy.deepcopy(item)
+        family = next(f for f in families if f["id"] == item["family"])
+        key = "spouses" if "owner" in item else "people"
+        defaults = {"alias": "", "dates": "", "spouses": [], "issues": [], "role": "", "sex": "未注", "parent": "", "edge_kind": "亲子", "parent_basis": "原文明示", "source": plan["source"], "declared_gen": None, "context": item["raw"]}
+        defaults.update(item)
+        family[key].append(defaults)
+        records[item["id"]] = defaults
+        if key == "spouses":
+            records[item["owner"]]["spouses"].append(item["id"])
+    for item in plan.get("related_people", []):
+        assert item["id"] not in records, "关联人物编号重复"
+        assert item["related_to"] in records, "关联对象不存在"
+        records[item["id"]] = copy.deepcopy(item)
+    for rid, change in plan.get("overrides", {}).items():
+        assert rid in records, rid
+        records[rid].update(change)
+    people = {p["id"]: p for f in families for p in f["people"]}
+    spouses = {p["id"]: p for f in families for p in f["spouses"]}
+    identifiers = {rid: registry.get(rid, rid) for rid in records}
+    for source, target in plan.get("same_person", []):
+        assert source in records and target in records
+        identifiers[source] = identifiers[target]
+    # 布局关系与正式核定关系分开保存；待核关系不能冒充已确认父母。
+    for p in people.values():
+        p["layout_parent"] = p.get("layout_parent", p.get("parent", ""))
+        if p.get("layout_parent"):
+            assert p["layout_parent"] in people, p
+        p["generation"] = p.get("generation") or p.get("declared_gen") or p.get("relative_gen") or 1
+    assert initial <= set(records), "不得删除原文记录"
+    assert all(p["owner"] in people for p in spouses.values())
+    assert {s for p in people.values() for s in p["spouses"]} == set(spouses)
+    for rid in people:
+        seen, current = set(), rid
+        while current in people:
+            assert current not in seen, ("关系循环", rid)
+            seen.add(current)
+            current = people[current].get("layout_parent")
+    return families, records, people, spouses, identifiers, initial
+
+
+def date_lines(p):
+    value = p.get("display_dates", p.get("dates", ""))
+    value = value.replace("年—", "—").replace("年——", "—")
+    result = []
+    for part in value.split("；"):
+        dates = re.split(r"[—－-]+", part)
+        if len(dates)==2 and all(re.search(r"(?:1[6789]|20)\d{2}", d) for d in dates) and len(chunks(part,9.5))>1:
+            result.extend(chunks(dates[0],9.5))
+            result.extend(chunks("—"+dates[1],9.5))
+        else:
+            result.extend(chunks(part,9.5))
+    return result
+
+
+def source_date_details(raw):
+    """保留原文明示日期与中文寿数，区分生卒和归葬等事件年份。"""
+    raw = re.sub(r"\s+", "", raw)
+    date = r"(?:约)?(?:1[6789]|20)\d{2}(?:年(?:\d{1,2}月(?:\d{1,2}日)?)?)?"
+    result = []
+    for match in re.finditer(date + r"(?:[—－-]+" + date + r")?", raw):
+        value = match.group()
+        before, after = raw[max(0, match.start()-6):match.start()], raw[match.end():]
+        clause = re.split(r"[，。；]", after, 1)[0]
+        if re.search(r"[—－-]", value):
+            result.append(value)
+        elif "归葬" in clause:
+            result.append(value + "归葬")
+        elif "遇难" in clause:
+            result.append(value + ("因工遇难" if "因工" in clause else "遇难"))
+        elif re.search(r"卒于$|逝于$|殁于$", before):
+            result.append("卒于" + value)
+        elif after.startswith("生") or re.search(r"生于$|出生于$", before):
+            result.append(value + "生")
+        elif re.match(r"(?:去世|辞世|逝世|卒)", after):
+            result.append(value + re.match(r"(?:去世|辞世|逝世|卒)", after)[0])
+        else:
+            result.append(value)
+    result += re.findall(r"(?:享寿|享年|终年)[零〇一二两三四五六七八九十百\d]+岁|生卒不详|生年不详|生卒失考|幼年夭折|早逝", raw)
+    return "；".join(dict.fromkeys(result))
+
+
+def node_blocks(p, spouses, ids):
+    values = [(p.get("display_name", p["name"]), 12, True)]
+    if p.get("alias"):
+        alias = p["alias"].replace("乳名", "").replace("又名", "")
+        values += [(v, 8.5, False) for v in chunks("（" + alias + "）", 8.8)]
+    values += [(v, 8.7, False) for v in date_lines(p)]
+    role = p.get("role", "")
+    if role and role not in ["本段起首人物", p.get("display_name", p["name"])]:
+        values += [(v, 8, False) for v in chunks(role, 10.5)]
+    for note in p.get("chart_notes", []):
+        values += [(v, 8, True) for v in chunks(note, 9.5)]
+    blocks = [{"record_id": p["id"], "lines": values}]
+    for sid in p["spouses"]:
+        s = spouses[sid]
+        prefix = s.get("role") or "配"
+        if prefix not in ["原配", "继配", "婿", "夫"]:
+            prefix = "配"
+        spouse_lines = [(v, 9.3, False) for v in chunks(prefix + "：" + s["name"], 8.3)]
+        spouse_lines += [(v, 8, False) for v in date_lines(s)]
+        for note in s.get("chart_notes", []):
+            spouse_lines += [(v, 8, False) for v in chunks(note, 9.5)]
+        blocks.append({"record_id": sid, "lines": spouse_lines})
+    return blocks
+
+
+def node_lines(p, spouses, ids):
+    return [line for block in node_blocks(p, spouses, ids) for line in block["lines"]]
+
+
+def layout_section(section, people, spouses, identifiers):
+    members = set(section["records"])
+    assert members and members <= set(people)
+    kids = defaultdict(list)
+    for rid in members:
+        par = people[rid].get("layout_parent")
+        if par in members:
+            assert people[par]["generation"] < people[rid]["generation"], ("代际层级未分开", par, rid)
+            kids[par].append(rid)
+    order = lambda rid: (people[rid].get("order", people[rid]["para"]), rid)
+    for values in kids.values():
+        values.sort(key=order)
+    roots = sorted([r for r in members if people[r].get("layout_parent") not in members], key=order)
+    leaves = []
+    def collect(r):
+        if kids[r]:
+            for c in kids[r]: collect(c)
+        else: leaves.append(r)
+    for r in roots: collect(r)
+    lines = {r: node_lines(people[r], spouses, identifiers) for r in members}
+    heights = {r: sum(s * 1.16 + 0.8 for _, s, _ in lines[r]) + 24 for r in members}
+    capacity = int((W - LEFT - RIGHT - CELL) // STEP) + 1
+    pages = []
+    for start in range(0, len(leaves), capacity):
+        subset = set(leaves[start:start + capacity])
+        for rid in list(subset):
+            par = people[rid].get("layout_parent")
+            while par in members:
+                subset.add(par)
+                par = people[par].get("layout_parent")
+        generations = sorted({people[r]["generation"] for r in subset})
+        row_h = {g: max(heights[r] for r in subset if people[r]["generation"] == g) for g in generations}
+        bands, band, used = [], [], 0
+        for g in generations:
+            needed = row_h[g] + 27
+            if band and used + needed > FLOOR - TOP:
+                bands.append(band)
+                band = [band[-1]]
+                used = row_h[band[0]] + 27
+            band.append(g)
+            used += needed
+        if band: bands.append(band)
+        cursor, xs = [0], {}
+        def place(r):
+            children = [c for c in kids[r] if c in subset]
+            if children:
+                positions = [place(c) for c in children]
+                xs[r] = (min(positions) + max(positions)) / 2
+            else:
+                xs[r] = cursor[0] * STEP
+                cursor[0] += 1
+            return xs[r]
+        for root in roots:
+            if root in subset: place(root)
+        width = (cursor[0] - 1) * STEP + CELL
+        shift = LEFT + (W - LEFT - RIGHT - width) / 2
+        for band in bands:
+            visible = sorted([r for r in subset if people[r]["generation"] in band], key=lambda r: (people[r]["generation"], xs[r]))
+            ys, y = {}, TOP
+            for g in band:
+                ys[g] = y
+                y += row_h[g] + 27
+            positions = {r: {"x": shift + xs[r], "y": ys[people[r]["generation"]], "h": heights[r]} for r in visible}
+            pages.append({"visible": visible, "positions": positions, "bands": band, "ys": ys})
+    return {"definition": section, "members": members, "kids": kids, "pages": pages, "lines": lines}
+
+
+def render(built, index, people, spouses, ids, mapping, offset, all_sections):
+    section, page = built["definition"], built["pages"][index]
+    local_total = len(built["pages"])
+    title = section["title"] + (f"（第{index + 1}/{local_total}页）" if local_total > 1 else "")
+    atoms = [text_atom(title, 36, 25, W - 72, 20, True),
+             text_atom(section.get("ancestry", ""), 36, 58, W - 72, 10),
+             text_atom("据张氏专稿独立编排　·　世代按亲属链接续；原标不一致处加注待核", 36, 79, W - 72, 9)]
+    pos = page["positions"]
+    for g in page["bands"]:
+        label = "第" + chinese_number(g) + "代"
+        family_character = section.get("generation_labels", {}).get(str(g), "")
+        paragraphs = [{"text":label,"size":10,"bold":True,"leading":15}]
+        if family_character:
+            paragraphs.append({"text":"【"+family_character+"】","size":8.5,"bold":False,"leading":13})
+        atom = text_atom("\n".join(v["text"] for v in paragraphs),8,page["ys"][g]+2,98,10,True,height=sum(v["leading"] for v in paragraphs)+2)
+        atom["paragraphs"] = paragraphs
+        atom["generation_label"] = g
+        atoms.append(atom)
+    line_offset = len(atoms)
+    bounds = {}
+    for rid in page["visible"]:
+        p, point = people[rid], pos[rid]
+        par = p.get("layout_parent")
+        footer = []
+        if par and par not in pos:
+            refs = mapping.get(par, [])
+            if refs:
+                value = "承上见" + "、".join(str(n) for n in refs[:4]) + "页"
+                footer.append(value)
+        others = sorted({n for child in built["kids"][rid] for n in mapping[child] if child not in pos and n != offset + index + 1})
+        if others:
+            footer.append("续见" + "、".join(str(n) for n in others[:5]) + "页")
+        external = sorted({mapping[c][0] for c,q in people.items() if q.get("layout_parent")==rid and c not in built["members"] and mapping.get(c)})
+        if external:
+            footer.append("详支" + "、".join(str(n) for n in external[:5]) + "页")
+        blocks = node_blocks(p, spouses, ids)
+        blocks[0]["lines"].extend((value, 7.5, True) for value in footer[:2])
+        y = point["y"]
+        for block in blocks:
+            paragraphs = [{"text": value, "size": size, "bold": bold, "leading": size*1.16+0.8} for value,size,bold in block["lines"]]
+            height = sum(v["leading"] for v in paragraphs)
+            atom = text_atom("\n".join(v["text"] for v in paragraphs), point["x"]-4, y, CELL+8, paragraphs[0]["size"], paragraphs[0]["bold"], height=height+1)
+            atom["paragraphs"] = paragraphs
+            atom["person_record"] = block["record_id"]
+            atoms.append(atom)
+            y += height
+        bounds[rid] = {"center": point["x"] + CELL/2, "top": point["y"], "bottom": y+1}
+    # 先取得实际文本框边界，再画线；同组兄弟姐妹共用一根水平线。
+    families = defaultdict(list)
+    for rid in page["visible"]:
+        par = people[rid].get("layout_parent")
+        if par in bounds:
+            families[(par, people[rid]["generation"])].append(rid)
+    edges, connections = [], []
+    def segment(x1, y1, x2, y2, dashed):
+        if abs(x1-x2)+abs(y1-y2)>0.01:
+            edges.append(line_atom(x1,y1,x2,y2,dashed))
+    for (par, generation), children in families.items():
+        parent = bounds[par]
+        px, sy = parent["center"], parent["bottom"]+3
+        joint = min(bounds[r]["top"] for r in children)-17
+        assert sy < joint, ("接线空间不足", par, children)
+        uncertain_family = all(people[r].get("uncertain",False) for r in children)
+        segment(px,sy,px,joint,uncertain_family)
+        centers = [bounds[r]["center"] for r in children]+[px]
+        segment(min(centers),joint,max(centers),joint,uncertain_family)
+        for rid in children:
+            p, child = people[rid], bounds[rid]
+            cx, ey = child["center"], child["top"]-4
+            uncertain = p.get("uncertain",False)
+            segment(cx,joint,cx,ey,uncertain)
+            tag = "待核" if uncertain else "嗣" if re.search("承嗣|收养",p.get("edge_kind","")) else "继" if "继女" in p.get("edge_kind","") else "女系" if "女系" in p.get("edge_kind","") else ""
+            if tag: edges.append(text_atom(tag,cx+4,joint+1,28,8,True,"left"))
+            connections.append({"parent":par,"child":rid,"parent_center":px,"child_center":cx,"start_y":sy,"joint_y":joint,"end_y":ey})
+    for relation in section.get("additional_relations", []):
+        parent_id, child_id = relation["from_record"], relation["to_record"]
+        if parent_id not in bounds or child_id not in bounds:
+            continue
+        parent, child = bounds[parent_id], bounds[child_id]
+        px, cx = parent["center"], child["center"]
+        sy, joint, ey = parent["bottom"]+3, child["top"]-23, child["top"]-4
+        assert sy < joint, ("补充关系接线空间不足", relation)
+        segment(px,sy,px,joint,True)
+        segment(px,joint,cx,joint,True)
+        segment(cx,joint,cx,ey,True)
+        edges.append(text_atom(relation["label"], min(px,cx)+5, joint+1, max(120,abs(px-cx)-10), 8, True, "left"))
+        connections.append({"parent":parent_id,"child":child_id,"parent_center":px,"child_center":cx,"start_y":sy,"joint_y":joint,"end_y":ey,"additional":True,"kind":relation["kind"]})
+    atoms[line_offset:line_offset] = edges
+    related_ids = []
+    for person in section.get("related_people", []):
+        if person["related_to"] not in pos:
+            continue
+        # 关联人物放在图的附记区域，不赋宗谱世次，也不接入父子树。
+        paragraphs = [{"text":person["name"],"size":12,"bold":True,"leading":16},
+                      {"text":person["relation_kind"]+"（不列世次）","size":8,"bold":False,"leading":11},
+                      {"text":person.get("target_label","关联对象")+"："+people[person["related_to"]]["name"],"size":8,"bold":False,"leading":11}]
+        width, height = CELL+34, 40
+        candidates = [(x, FLOOR-height) for x in range(round(W-RIGHT-width), round(LEFT)-1, -round(STEP))]
+        def clear(x,y):
+            return all(a["kind"]!="text" or x+width+5 <= a["x"] or a["x"]+a["w"]+5 <= x or y+height+5 <= a["y"] or a["y"]+a["h"]+5 <= y for a in atoms)
+        found = next(((x,y) for x,y in candidates if clear(x,y)), None)
+        assert found, "关联人物附记区域不足"
+        atom = text_atom("\n".join(v["text"] for v in paragraphs), *found, width, 12, True, height=height)
+        atom.update(paragraphs=paragraphs,person_record=person["id"],non_genealogical=True)
+        atoms.append(atom)
+        related_ids.append(person["id"])
+    notes = section.get("notes", [])
+    for n, line in enumerate([v for note in notes for v in chunks(note, 123)][:4]):
+        atoms.append(text_atom(line, 36, 756 + n * 11, W - 72, 8.5, False, "left"))
+    atoms.append(text_atom("实线：原文关系按支系接续　虚线：候选关系待核　嗣：承嗣／收养　继：继亲；配偶不自动视为全部子女生母／生父", 36, 809, W - 72, 8, False, "left"))
+    atoms.append(text_atom("同人出继、承嗣两处保留原记；续页重复上代供接续。核对编号仅留在配套索引中，图上不显示。", 36, 824, W - 140, 7.8, False, "left"))
+    atoms.append(text_atom(str(offset + index + 1), W - 82, 820, 40, 10, False, "right"))
+    for a in atoms:
+        if a["kind"] == "text":
+            if "paragraphs" in a:
+                for paragraph in a["paragraphs"]:
+                    paragraph["text"] = generation_terms(paragraph["text"])
+                a["text"] = "\n".join(v["text"] for v in a["paragraphs"])
+            else:
+                a["text"] = generation_terms(a["text"])
+            assert 0 <= a["x"] and a["x"] + a["w"] <= W + 0.1
+            assert 0 <= a["y"] and a["y"] + a["h"] <= H + 0.1, a
+    return {"house_id": section["id"], "house_title": section["title"], "local_page": index + 1, "local_total": local_total,
+            "global_page": offset + index + 1, "atoms": atoms,
+            "record_ids": [s for r in page["visible"] for s in [r] + people[r]["spouses"]]+related_ids, "connections":connections}
+
+
+def report(plan, families, records, people, spouses, ids, pages, groups, destination):
+    doc = Document()
+    sec = doc.sections[0]
+    sec.top_margin = sec.bottom_margin = Inches(0.65)
+    sec.left_margin = sec.right_margin = Inches(0.65)
+    normal = doc.styles["Normal"]
+    normal.font.name = "宋体"
+    normal.font.size = Pt(10)
+    normal.element.rPr.rFonts.set(qn("w:eastAsia"), "宋体")
+    doc.add_heading(plan["title"] + "编排与核对说明", 0)
+    doc.add_paragraph("本册仅依据所附张氏专稿制作，保留原文人物及配偶记录，不以其他稿件覆盖。第一代为原文约1783年迁居高家圪台的始祖；名讳失考者按原记保留。图册为关系核对稿，有争议的关系不作事实定稿。")
+    doc.add_paragraph(f"共{len(pages)}页图，按始祖总览及房支分段。原抽取人物、配偶记录与补充记录全部有图中位置。暂编人物编号用于交叉核对，不代表核定人口数。")
+    doc.add_heading("编辑与打印", 1)
+    doc.add_paragraph("每个人的姓名、生卒、称谓和注记合并在一个原生文本框内；配偶各用一个文本框，关系线保持独立可编辑。图上不显示核对编号，编号仅在索引中保留。选中页内图组后可编辑组内文字；需要单独移动时，右键选择“组合→取消组合”。页面使用横向纸张（420×297毫米），打印选实际大小；较小纸张可适配缩印，但字号随之缩小。")
+    doc.add_heading("图页目录", 1)
+    table = doc.add_table(rows=1, cols=3)
+    table.style = "Table Grid"
+    for c, t in zip(table.rows[0].cells, ["编号", "内容", "图册页码"]): c.text = t
+    for g in groups:
+        cells = table.add_row().cells
+        for c,t in zip(cells,[g[0],g[1],str(g[3]) if g[3]==g[4] else f"{g[3]}—{g[4]}"]): c.text = t
+    doc.add_heading("待核事项与编排依据", 1)
+    for issue in plan["findings"]:
+        doc.add_heading(issue["title"], 2)
+        doc.add_paragraph(issue["detail"])
+        doc.add_paragraph("原文出处：" + issue["evidence"])
+        doc.add_paragraph("图中处理：" + issue["action"])
+    doc.add_page_break()
+    doc.add_heading("人物与原文逐条索引", 1)
+    doc.add_paragraph("每一行对应一条原文记载。出继、生身或重复记载可沿用同一人物编号；原文不确定的同人、姓名差异不擅自合并。补充者为原文名单或内嵌配偶，不补造姓名。段落从原文件第一段起计，包含空段。")
+    mapping = defaultdict(set)
+    for page in pages:
+        for rid in page["record_ids"]: mapping[rid].add(page["global_page"])
+    table = doc.add_table(rows=1, cols=5)
+    table.style = "Table Grid"
+    for c,t in zip(table.rows[0].cells,["人物编号", "姓名／原称", "图页", "原文段", "关系与原标"]): c.text=t
+    header = OxmlElement("w:tblHeader")
+    table.rows[0]._tr.get_or_add_trPr().append(header)
+    for rid,p in sorted(records.items(),key=lambda item:(item[1]["para"],item[0])):
+        parent=people.get(p.get("parent", ""),{}).get("name", "")
+        owner=people.get(p.get("owner", ""),{}).get("name", "")
+        if p.get("related_to"):
+            rel="关联对象："+people[p["related_to"]]["name"]+"；"+p["relation_kind"]+"，不列宗谱世次"
+        else:
+            rel=("配偶："+owner) if owner else (("上辈："+parent) if parent else "上辈未核定／始祖")
+        if p.get("declared_gen"): rel += "；原列第"+chinese_number(p["declared_gen"])+"代"
+        if p.get("uncertain"): rel += "；关系待核"
+        if p.get("chart_notes"): rel += "；"+"；".join(p["chart_notes"])
+        cells=table.add_row().cells
+        for c,t in zip(cells,[ids[rid],p["name"],"、".join(map(str,sorted(mapping[rid]))),str(p["para"]),rel]): c.text=t
+    doc.core_properties.author=""
+    doc.core_properties.last_modified_by=""
+    doc.core_properties.title=plan["title"]+"核对说明"
+    zoom=doc.settings.element.find(qn("w:zoom"))
+    if zoom is not None:
+        zoom.set(qn("w:percent"),"100")
+    doc.save(destination)
+
+
+def main():
+    parser=argparse.ArgumentParser(description="按单份材料生成独立可编辑系谱图册")
+    for key in ["data","plan","registry","out"]: parser.add_argument("--"+key,required=True,type=Path)
+    args=parser.parse_args()
+    data=json.loads(args.data.read_text(encoding="utf-8"))
+    plan=json.loads(args.plan.read_text(encoding="utf-8"))
+    registry=json.loads(args.registry.read_text(encoding="utf-8"))["record_to_person"]
+    families, records, people, spouses, ids, initial=load_model(data,plan,registry)
+    sections=copy.deepcopy(plan["sections"])
+    for section in sections:
+        section.setdefault("generation_labels",plan.get("generation_labels",{}))
+        if "families" in section:
+            section["records"]=[p["id"] for f in families if f["id"] in section["families"] for p in f["people"]]
+        section["related_people"]=[p for p in plan.get("related_people",[]) if p["related_to"] in section["records"]]
+        section["additional_relations"]=[r for r in plan.get("additional_relations",[]) if r["from_record"] in section["records"] and r["to_record"] in section["records"]]
+    built=[layout_section(s,people,spouses,ids) for s in sections]
+    mapping=defaultdict(list)
+    number=0
+    for b in built:
+        for page in b["pages"]:
+            number+=1
+            for rid in page["visible"]: mapping[rid].append(number)
+    pages,groups=[],[]
+    for b in built:
+        first=len(pages)+1
+        offset=len(pages)
+        for i in range(len(b["pages"])): pages.append(render(b,i,people,spouses,ids,mapping,offset,built))
+        groups.append([b["definition"]["id"],b["definition"]["title"],len(b["pages"]),first,len(pages)])
+    covered={rid for page in pages for rid in page["record_ids"]}
+    assert covered==set(records), ("人物漏图",set(records)-covered)
+    args.out.mkdir(parents=True,exist_ok=True)
+    payload={"width":W,"height":H,"pages":pages,"houses":groups,"record_count":len(records),"source_records":len(initial),"entity_count":len(set(ids.values())),"page_count":len(pages)}
+    (args.out/"独立系谱图版面.json").write_text(json.dumps(payload,ensure_ascii=False,indent=2),encoding="utf-8")
+    (args.out/"独立关系与原文记录.json").write_text(json.dumps({"records":records,"identifiers":ids,"findings":plan["findings"]},ensure_ascii=False,indent=2),encoding="utf-8")
+    write_document(pages,W,H,args.out/(plan["title"]+"_逐项可编辑系谱图.docx"))
+    folder=args.out/"分房支可编辑文档"
+    folder.mkdir(exist_ok=True)
+    for group in groups:
+        selected=[p for p in pages if p["house_id"]==group[0]]
+        name=re.sub(r'[<>:"/\\|?*]',"",group[1])
+        write_document(selected,W,H,folder/(group[0]+"_"+name+".docx"))
+    report(plan,families,records,people,spouses,ids,pages,groups,args.out/(plan["title"]+"_人物索引与待核说明.docx"))
+    print(f"原文人物与配偶记录{len(initial)}条；补充原文名单与内嵌信息{len(records)-len(initial)}条；图册{len(pages)}页，{len(groups)}个分段。")
+    print("全部人物及配偶均有图中位置；原文条目完整保留。")
+
+
+if __name__=="__main__": main()

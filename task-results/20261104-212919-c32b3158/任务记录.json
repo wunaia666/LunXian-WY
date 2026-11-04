@@ -1,0 +1,19 @@
+{
+  "任务标识": "20261104-212919-c32b3158",
+  "任务名称": "家谱原稿逐段复核与关系漏项修订",
+  "完成时间": "2026-11-04T21:29:19.478614+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/build_standalone_genealogy.py",
+      "校验值": "33b7ff880d522df0737278eab1096f2eda31d4bc96b7f3d347416279e37cf0f7"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/audit_genealogy_source.py",
+      "校验值": "1072c0e78db45e01ea13817bb9544cb09bf10fd4cb1664acf88b42fc3650093f"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "cc91296c5afe1d3a3392da84408834c345717282028bc78d9ca1972bc4f2ab9f"
+    }
+  ]
+}
