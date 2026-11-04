@@ -1,0 +1,15 @@
+{
+  "任务标识": "20261104-204936-eccac8b6",
+  "任务名称": "家谱总览合并与大字可编辑演示文稿导出",
+  "完成时间": "2026-11-04T20:49:36.761786+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/build_genealogy_presentation.py",
+      "校验值": "d6dea0fe69c5d29bdcf8055e91991d0dc47eac73fd5bbb6ae69b965b63829464"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "c627d784684e2f2857f4e4285bbab2842410bf531d5b1978d132c91d28ab0691"
+    }
+  ]
+}
