@@ -1,0 +1,15 @@
+{
+  "任务标识": "20261104-195719-7cddfa4a",
+  "任务名称": "按人物文本框中心与实际边界校齐世系连线",
+  "完成时间": "2026-11-04T19:57:19.448441+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/build_standalone_genealogy.py",
+      "校验值": "9678c9dc01b518f8dce163a2ee03c9f6097c407fc59918e1d738130020d4e13f"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "313b3bc4349c3f644e80d8bbd4b3dfd5f6b6374fb4f01210fa7d3ec9eca86c15"
+    }
+  ]
+}
