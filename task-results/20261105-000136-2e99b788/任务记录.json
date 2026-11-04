@@ -1,0 +1,19 @@
+{
+  "任务标识": "20261105-000136-2e99b788",
+  "任务名称": "族谱完整原文逐门逐支编排与实线待核标注",
+  "完成时间": "2026-11-05T00:01:36.195783+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/build_fulltext_genealogy.py",
+      "校验值": "b61082c0977036b7ded4632880f342edc8a6ee4763395d9f98a5048ce9af74fc"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/build_genealogy_presentation.py",
+      "校验值": "d746043abbe2081f23e4522810c9dbd974fddfaafccda0196786d6d8907e4cf0"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "ca5a6959f8c3eeeb2aae48b3b6d9b0aa60369a37dd3c99b27d985eda50a518b6"
+    }
+  ]
+}
