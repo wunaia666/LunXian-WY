@@ -1,0 +1,23 @@
+{
+  "任务标识": "20261105-102040-e74c060a",
+  "任务名称": "依据主稿逐户合图并增加逐段核验和精简副本",
+  "完成时间": "2026-11-05T10:20:40.303003+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/build_household_atlas.py",
+      "校验值": "53d248b2dcdbc7dd2302ec9eb7eaed30d0440aaf547a511aee02481ba4aa9094"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/audit_household_atlas.py",
+      "校验值": "5c54c8153108d1d405578d47195bd8df4f79f352ffaa9ce105fd206a10bc3303"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/make_household_concise.py",
+      "校验值": "773d8f0fda787364f3e6e41c5b52b4fdaed4bcdb093ce6b7ea274d89c51dde40"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/逐户图册工具说明.md",
+      "校验值": "d61573f9265535a1f814a1182d04351eabf489fe1e2d4b88d41c7b1278b4705d"
+    }
+  ]
+}
