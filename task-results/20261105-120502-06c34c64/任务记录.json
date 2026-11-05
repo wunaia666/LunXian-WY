@@ -1,0 +1,23 @@
+{
+  "任务标识": "20261105-120502-06c34c64",
+  "任务名称": "族谱配偶统一下置直线重排并增加房支复核和待审核清单",
+  "完成时间": "2026-11-05T12:05:02.875315+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/build_household_atlas.py",
+      "校验值": "4f4eb307702ab23ec7fc24602895b212f94c3b4a5c3ecf12da902cf48c68c147"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/make_household_concise.py",
+      "校验值": "ded90e4943a8df3586d3d6eebd81d11aa4ce807fa09e2910829b10f7b922d5b4"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/review_household_order.py",
+      "校验值": "200092ac3e27994ac493b9425018d23be5570b2a1bb1c2d78ac06b4f730fafc5"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/逐户图册工具说明.md",
+      "校验值": "56a826f312f25545f91aa7165faa1a585ee9cb27348f7d80b65edc50569e77dc"
+    }
+  ]
+}
