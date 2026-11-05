@@ -1,0 +1,19 @@
+{
+  "任务标识": "20261105-125645-f07307b0",
+  "任务名称": "清理图册重复介绍并将审核原因移入独立详细文件",
+  "完成时间": "2026-11-05T12:56:45.808253+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/make_household_concise.py",
+      "校验值": "5e920396d1d3ca949b716c14df18107d29fa9795e44eea510a39283580e98a7b"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/make_external_review_report.py",
+      "校验值": "0692f2f46f9b6daafd61cc570a16dfb94c8b504ad99c21cd58b6b1a12b0877c8"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/逐户图册工具说明.md",
+      "校验值": "09c9d1be37b4f4bdacb038b3feddafd2b08dd3c1eca679820c7ec6c4554d81c7"
+    }
+  ]
+}
