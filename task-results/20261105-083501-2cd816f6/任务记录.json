@@ -1,0 +1,27 @@
+{
+  "任务标识": "20261105-083501-2cd816f6",
+  "任务名称": "按原稿凡例重排代系房支及横向婚配图并完成核验",
+  "完成时间": "2026-11-05T08:35:01.227701+08:00",
+  "文件": [
+    {
+      "路径": "tools/genealogy-review-20261104/build_conventions_genealogy.py",
+      "校验值": "a3496cafa7c31d46bfe1889b063c1c53b7d14ad3d7f1d0188d731c7f46ee8795"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/audit_conventions_genealogy.py",
+      "校验值": "13e4f9dfc931f5b7d42f9abb60313bb47c26fe2f400a46d9fa535b65c7ee32cf"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/build_genealogy_presentation.py",
+      "校验值": "81e2874fc7e934fba7f68433aa668c5c7213a54533be567eed58a20e29cf2e16"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/check_native_presentation.py",
+      "校验值": "de2b2c69bc474f2897d41c48289a6cdeea6dafc0b221d971238244a4d6a16af9"
+    },
+    {
+      "路径": "tools/genealogy-review-20261104/使用说明.md",
+      "校验值": "ea18fb2c709d67f3a6f4c1270689735192f24534df9f6cd2abb21350300b39fb"
+    }
+  ]
+}
