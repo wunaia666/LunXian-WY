@@ -1,0 +1,63 @@
+{
+  "任务标识": "20261115-201727-be80b61b",
+  "任务名称": "发布截图分层复刻技能及中文使用说明",
+  "完成时间": "2026-11-15T20:17:27.885224+08:00",
+  "文件": [
+    {
+      "路径": "publications/native-pptx-rebuild/README.md",
+      "校验值": "7f2fbd70a5c5fd6d6595748d7dc694c4f555fd6909c6a1f29dd61158f1757b31"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/requirements.txt",
+      "校验值": "7e5ebe6381d15a76abdfec5f046d9b8b6c1ae664a4202830140534b620dfc48b"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/SKILL.md",
+      "校验值": "feb63f6323b8d156d7a8ce90208cecef8af744c30d4fd4f2a666a0ab845ea9de"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/修改说明.md",
+      "校验值": "24fd67fe5ea7b5062122e28655b83c1b75b1e0e177719d1212875c88e3d75c00"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/agents/openai.yaml",
+      "校验值": "7ae8dc7f9d219ec24f0b1d6cd85adabd1dce5991c487211e05d6fe491fc8911c"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/assets/对象登记模板.json",
+      "校验值": "7f476ffff5e59e22cb20802c02d655794171eb08a3bc8da52c2f78ffae91ba38"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/references/原生对象与回填.md",
+      "校验值": "e63771d336718afe67e310db7ed5e7013ae4e5c9f5691c9b64de612daa09e8a7"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/references/复刻与动效故障排查.md",
+      "校验值": "804732da3ad7922f7ace8e516cacd6d31eeaf61e449340a772adec66988dba47"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/references/案例与证据.md",
+      "校验值": "d7c824fbd29d095131bc4b5e030ce8632a57db41c6eed760adc5c57dfdd51872"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/references/背景与透明素材.md",
+      "校验值": "963c3fb0064befee163fb5fe7f390f69d823b827012f9b66b7bc6a5c713fd1d8"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/scripts/audit_pptx.py",
+      "校验值": "1e8e7f47c75732843ff7762f5173896f6eada80f906fe4b8c9659cb36258c439"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/scripts/compare_visual.py",
+      "校验值": "69e72d546a54fdea188d922ca7d8238f7a030c7956cad91bfd11f7473554401c"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/tests/test_audit.py",
+      "校验值": "fa7128419a2ac89af70f0352df5c8b94121e3569706dab406c0cd4f2a8d70586"
+    },
+    {
+      "路径": "publications/native-pptx-rebuild/tests/test_visual.py",
+      "校验值": "117bd7957117b320acad25843d93d4636f30e7fc22774e739543fd453b92e2c7"
+    }
+  ]
+}
